@@ -22,16 +22,16 @@ const Hero = () => {
   const [isSubmitted, setIsSubmitted] = useState(false)
 
   const handleSubmit = (e) => {
-    e.preventDefault()
-    // Handle form submission
-    console.log('Form submitted:', formData)
-    setIsSubmitted(true)
-    
+    // Netlify will handle the submission directly. No e.preventDefault() needed.
+    // You can still log the form data for debugging if needed.
+    console.log("Form submitted:", formData);
+    setIsSubmitted(true);
+
     // Reset form after 3 seconds
     setTimeout(() => {
-      setIsSubmitted(false)
+      setIsSubmitted(false);
       setFormData({
-        name: '',
+        name: "",
         email: '',
         phone: '',
         projectType: '',
