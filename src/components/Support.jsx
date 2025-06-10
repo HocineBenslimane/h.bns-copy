@@ -23,27 +23,25 @@ const Support = () => {
   const handleContactSubmit = async (e) => {
     e.preventDefault()
     
+    const data = {
+      "form-name": "support-contact",
+      ...contactForm,
+    };
+
     try {
-      const formData = new FormData()
-      formData.append('form-name', 'support-contact')
-      formData.append('name', contactForm.name)
-      formData.append('email', contactForm.email)
-      formData.append('subject', contactForm.subject)
-      formData.append('message', contactForm.message)
+      await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams(data).toString(),
+      });
 
-      await fetch('/', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams(formData).toString()
-      })
-
-      alert('Thank you for your message! We will respond within 24 hours.')
-      setContactForm({ name: '', email: '', subject: '', message: '' })
+      alert("Thank you for your message! We will respond within 24 hours.");
+      setContactForm({ name: "", email: "", subject: "", message: "" });
     } catch (error) {
-      console.error('Form submission error:', error)
-      alert('There was an error sending your message. Please try again or contact us directly.')
+      console.error("Form submission error:", error);
+      alert("There was an error sending your message. Please try again or contact us directly.");
     }
-  }
+  };
 
   const handleContactChange = (field, value) => {
     setContactForm(prev => ({ ...prev, [field]: value }))
