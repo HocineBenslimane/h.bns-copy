@@ -21,26 +21,46 @@ const Hero = () => {
 
   const [isSubmitted, setIsSubmitted] = useState(false)
 
-  const handleSubmit = (e) => {
-    // Netlify will handle the submission directly. No e.preventDefault() needed.
-    // You can still log the form data for debugging if needed.
-    console.log("Form submitted:", formData);
-    setIsSubmitted(true);
+  const handleSubmit = async (e) => {
+    e.preventDefault(); // Prevent default React form submission
 
-    // Reset form after 3 seconds
-    setTimeout(() => {
-      setIsSubmitted(false);
-      setFormData({
-        name: "",
-        email: '',
-        phone: '',
-        projectType: '',
-        budget: '',
-        description: '',
-        timeline: ''
-      })
-    }, 3000)
-  }
+    // Create a new FormData object from the current form data
+    const form = e.target;
+    const formDataToSend = new FormData();
+    for (const key in formData) {
+      formDataToSend.append(key, formData[key]);
+    }
+
+    // Append the Netlify form-name for identification
+    formDataToSend.append("form-name", "quote-request");
+
+    // Submit the form to Netlify
+       try {
+      await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams(formDataToSend).toString(),
+      });
+      console.log("Form successfully submitted to Netlify!");
+      setIsSubmitted(true);
+
+      // Reset form after 3 seconds
+      setTimeout(() => {
+        setIsSubmitted(false);
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          projectType: "",
+          budget: "",
+          description: "",
+          timeline: "",
+        });
+      }, 3000);    } catch (error) {
+      console.error("Form submission error:", error);
+      alert("There was an error submitting your form. Please try again later.");
+    }
+  };
 
   const handleChange = (field, value) => {
     setFormData(prev => ({ ...prev, [field]: value }))
