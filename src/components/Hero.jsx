@@ -131,7 +131,7 @@ const Hero = () => {
               </CardHeader>
               <CardContent className="space-y-6">
                 {!isSubmitted ? (
-                  <form onSubmit={handleSubmit} className="space-y-6" id="quote" name="quote-request" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+                  <form onSubmit={handleSubmit} className="space-y-6" id="quote" name="quote-request" method="POST" data-netlify="true" data-netlify-recaptcha="true" netlify-honeypot="bot-field">
                     {/* Hidden field for Netlify */}
                     <input type="hidden" name="form-name" value="quote-request" />
                     {/* Honeypot field for spam protection */}
@@ -300,7 +300,10 @@ The more details you provide, the better we can serve you!"
                       </div>
                     </div>
 
-                    <div className="pt-4 border-t border-gray-200">
+                    <div className="pt-4 border-t border-gray-200 space-y-4">
+                      {/* reCAPTCHA v2 */}
+                      <div data-netlify-recaptcha="true" className="flex justify-center"></div>
+                      
                       <Button type="submit" className="w-full group text-lg py-6 bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary shadow-lg hover:shadow-xl transition-all duration-300" size="lg">
                         <Sparkles className="mr-2 h-5 w-5 group-hover:rotate-12 transition-transform" />
                         Get My Free Quote
