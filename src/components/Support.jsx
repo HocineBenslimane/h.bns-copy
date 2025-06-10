@@ -20,11 +20,29 @@ const Support = () => {
     message: ''
   })
 
-  const handleContactSubmit = (e) => {
+  const handleContactSubmit = async (e) => {
     e.preventDefault()
-    console.log('Contact form submitted:', contactForm)
-    alert('Thank you for your message! We will respond within 24 hours.')
-    setContactForm({ name: '', email: '', subject: '', message: '' })
+    
+    try {
+      const formData = new FormData()
+      formData.append('form-name', 'support-contact')
+      formData.append('name', contactForm.name)
+      formData.append('email', contactForm.email)
+      formData.append('subject', contactForm.subject)
+      formData.append('message', contactForm.message)
+
+      await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(formData).toString()
+      })
+
+      alert('Thank you for your message! We will respond within 24 hours.')
+      setContactForm({ name: '', email: '', subject: '', message: '' })
+    } catch (error) {
+      console.error('Form submission error:', error)
+      alert('There was an error sending your message. Please try again or contact us directly.')
+    }
   }
 
   const handleContactChange = (field, value) => {
@@ -111,12 +129,20 @@ const Support = () => {
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <form onSubmit={handleContactSubmit} className="space-y-4">
+              <form onSubmit={handleContactSubmit} className="space-y-4" name="support-contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+                {/* Hidden fields for Netlify */}
+                <input type="hidden" name="form-name" value="support-contact" />
+                <div style={{ display: 'none' }}>
+                  <label>
+                    Don't fill this out if you're human: <input name="bot-field" />
+                  </label>
+                </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="space-y-2">
                     <Label htmlFor="contact-name">Name *</Label>
                     <Input
                       id="contact-name"
+                      name="name"
                       value={contactForm.name}
                       onChange={(e) => handleContactChange('name', e.target.value)}
                       required
@@ -126,6 +152,7 @@ const Support = () => {
                     <Label htmlFor="contact-email">Email *</Label>
                     <Input
                       id="contact-email"
+                      name="email"
                       type="email"
                       value={contactForm.email}
                       onChange={(e) => handleContactChange('email', e.target.value)}
@@ -138,6 +165,7 @@ const Support = () => {
                   <Label htmlFor="contact-subject">Subject *</Label>
                   <Input
                     id="contact-subject"
+                    name="subject"
                     value={contactForm.subject}
                     onChange={(e) => handleContactChange('subject', e.target.value)}
                     required
@@ -148,6 +176,7 @@ const Support = () => {
                   <Label htmlFor="contact-message">Message *</Label>
                   <Textarea
                     id="contact-message"
+                    name="message"
                     rows={5}
                     value={contactForm.message}
                     onChange={(e) => handleContactChange('message', e.target.value)}
