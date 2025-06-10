@@ -57,28 +57,49 @@ const Legal = () => {
                 </div>
                 
                 <div>
-                  <h3 className="text-lg font-semibold mb-3">3. Intellectual Property</h3>
+                  <h3 className="text-lg font-semibold mb-3">3. Discounts and Promotional Pricing</h3>
+                  <p className="text-gray-600 leading-relaxed">
+                    Discounts and promotional offers are subject to specific terms and conditions. Promotional codes cannot be combined with other offers unless explicitly stated. Discount eligibility may be limited by geographic location, customer type, or purchase history. H.BNS LLC reserves the right to modify or discontinue promotional offers at any time without prior notice. Promotional pricing is valid only during the specified promotional period.
+                  </p>
+                </div>
+                
+                <div>
+                  <h3 className="text-lg font-semibold mb-3">4. Import Duty and Tax Responsibilities</h3>
+                  <p className="text-gray-600 leading-relaxed">
+                    For customers outside the European Union (Non-EU customers), you are solely responsible for any import duties, taxes, customs fees, or other charges imposed by your local government or customs authorities. These charges are not included in our pricing and are not collected by H.BNS LLC. We recommend checking with your local customs office for specific requirements and potential charges before placing an order. H.BNS LLC is not responsible for any delays, additional costs, or issues arising from customs processing.
+                  </p>
+                </div>
+                
+                <div>
+                  <h3 className="text-lg font-semibold mb-3">5. Promotional Items and Free Gifts</h3>
+                  <p className="text-gray-600 leading-relaxed">
+                    Promotional items and free gifts are provided "as is" without warranty of any kind. Free gifts and promotional items cannot be exchanged, returned, or refunded. The availability of promotional items is limited and subject to stock availability. H.BNS LLC reserves the right to substitute promotional items with items of equal or greater value. Promotional items are intended for the original purchaser and may not be resold or transferred. Abuse of promotional offers may result in cancellation of orders and restriction of future promotional eligibility.
+                  </p>
+                </div>
+                
+                <div>
+                  <h3 className="text-lg font-semibold mb-3">6. Intellectual Property</h3>
                   <p className="text-gray-600 leading-relaxed">
                     Upon full payment, clients receive rights to use commissioned work as specified in the project agreement. H.BNS LLC retains the right to display work in portfolios and marketing materials unless otherwise agreed upon in writing.
                   </p>
                 </div>
                 
                 <div>
-                  <h3 className="text-lg font-semibold mb-3">4. Project Timeline</h3>
+                  <h3 className="text-lg font-semibold mb-3">7. Project Timeline</h3>
                   <p className="text-gray-600 leading-relaxed">
                     Project timelines are estimates and may vary based on complexity and revision requirements. Rush orders are available for additional fees. Delays caused by client feedback or approval processes may extend the timeline.
                   </p>
                 </div>
 
                 <div>
-                  <h3 className="text-lg font-semibold mb-3">5. Limitation of Liability</h3>
+                  <h3 className="text-lg font-semibold mb-3">8. Limitation of Liability</h3>
                   <p className="text-gray-600 leading-relaxed">
                     H.BNS LLC's liability is limited to the amount paid for services. We are not responsible for any indirect or consequential damages arising from the use of our services or products.
                   </p>
                 </div>
 
                 <div>
-                  <h3 className="text-lg font-semibold mb-3">6. Governing Law</h3>
+                  <h3 className="text-lg font-semibold mb-3">9. Governing Law</h3>
                   <p className="text-gray-600 leading-relaxed">
                     These terms are governed by the laws of the United States. Any disputes will be resolved in accordance with applicable federal and state laws.
                   </p>
