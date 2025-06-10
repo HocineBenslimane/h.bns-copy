@@ -111,7 +111,13 @@ const Hero = () => {
               </CardHeader>
               <CardContent className="space-y-6">
                 {!isSubmitted ? (
-                  <form onSubmit={handleSubmit} className="space-y-6" id="quote">
+                  <form onSubmit={handleSubmit} className="space-y-6" id="quote" name="quote-request" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+                    {/* Hidden field for Netlify */}
+                    <input type="hidden" name="form-name" value="quote-request" />
+                    {/* Honeypot field for spam protection */}
+                    <div style={{ display: 'none' }}>
+                      <label>Don't fill this out if you're human: <input name="bot-field" /></label>
+                    </div>
                     {/* Contact Information Section */}
                     <div className="space-y-4">
                       <div className="flex items-center space-x-2 text-sm font-semibold text-gray-700 border-b border-gray-200 pb-2">
@@ -127,6 +133,7 @@ const Hero = () => {
                           </Label>
                           <Input
                             id="name"
+                            name="name"
                             placeholder="e.g., John Smith"
                             value={formData.name}
                             onChange={(e) => handleChange('name', e.target.value)}
@@ -141,6 +148,7 @@ const Hero = () => {
                           </Label>
                           <Input
                             id="email"
+                            name="email"
                             type="email"
                             placeholder="john@example.com"
                             value={formData.email}
@@ -159,6 +167,7 @@ const Hero = () => {
                         </Label>
                         <Input
                           id="phone"
+                          name="phone"
                           type="tel"
                           placeholder="+1 (555) 123-4567"
                           value={formData.phone}
@@ -181,7 +190,7 @@ const Hero = () => {
                             <FileText className="h-3 w-3 text-gray-500" />
                             <span>Project Type *</span>
                           </Label>
-                          <Select onValueChange={(value) => handleChange('projectType', value)}>
+                          <Select name="projectType" onValueChange={(value) => handleChange('projectType', value)}>
                             <SelectTrigger className="transition-all duration-200 focus:ring-2 focus:ring-primary/20">
                               <SelectValue placeholder="What do you need?" />
                             </SelectTrigger>
@@ -194,6 +203,8 @@ const Hero = () => {
                               <SelectItem value="other">✨ Other (specify in description)</SelectItem>
                             </SelectContent>
                           </Select>
+                          {/* Hidden input for Netlify form submission */}
+                          <input type="hidden" name="projectType" value={formData.projectType} />
                         </div>
                         <div className="space-y-2">
                           <Label htmlFor="budget" className="flex items-center space-x-1">
@@ -201,7 +212,7 @@ const Hero = () => {
                             <span>Budget Range</span>
                             <span className="text-xs text-gray-400">(helps us tailor our proposal)</span>
                           </Label>
-                          <Select onValueChange={(value) => handleChange('budget', value)}>
+                          <Select name="budget" onValueChange={(value) => handleChange('budget', value)}>
                             <SelectTrigger className="transition-all duration-200 focus:ring-2 focus:ring-primary/20">
                               <SelectValue placeholder="Select your budget" />
                             </SelectTrigger>
@@ -214,6 +225,8 @@ const Hero = () => {
                               <SelectItem value="discuss">💬 Let's discuss</SelectItem>
                             </SelectContent>
                           </Select>
+                          {/* Hidden input for Netlify form submission */}
+                          <input type="hidden" name="budget" value={formData.budget} />
                         </div>
                       </div>
 
@@ -223,7 +236,7 @@ const Hero = () => {
                           <span>Preferred Timeline</span>
                           <span className="text-xs text-gray-400">(rush orders available)</span>
                         </Label>
-                        <Select onValueChange={(value) => handleChange('timeline', value)}>
+                        <Select name="timeline" onValueChange={(value) => handleChange('timeline', value)}>
                           <SelectTrigger className="transition-all duration-200 focus:ring-2 focus:ring-primary/20">
                             <SelectValue placeholder="When do you need this?" />
                           </SelectTrigger>
@@ -234,6 +247,8 @@ const Hero = () => {
                             <SelectItem value="flexible">🕐 Flexible timeline</SelectItem>
                           </SelectContent>
                         </Select>
+                        {/* Hidden input for Netlify form submission */}
+                        <input type="hidden" name="timeline" value={formData.timeline} />
                       </div>
 
                       <div className="space-y-2">
@@ -243,6 +258,7 @@ const Hero = () => {
                         </Label>
                         <Textarea
                           id="description"
+                          name="description"
                           placeholder="Tell us about your vision! Include details like:
 • Style preferences (realistic, cartoon, minimalist, etc.)
 • Color schemes or mood
