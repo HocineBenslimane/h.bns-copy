@@ -20,13 +20,6 @@ const Support = () => {
     message: ''
   })
 
-  const handleContactSubmit = (e) => {
-    // Netlify will handle the submission directly, no need for e.preventDefault() or fetch
-    // This function can be used for client-side validation if needed before submission
-    // For now, we'll just reset the form after submission (handled by Netlify)
-    setContactForm({ name: "", email: "", subject: "", message: "" });
-  };
-
   const handleContactChange = (field, value) => {
     setContactForm(prev => ({ ...prev, [field]: value }))
   }
@@ -111,7 +104,7 @@ const Support = () => {
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <form onSubmit={handleContactSubmit} className="space-y-4" name="support-contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+              <form className="space-y-4" name="support-contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
                 {/* Hidden fields for Netlify */}
                 <input type="hidden" name="form-name" value="support-contact" />
                 <div style={{ display: 'none' }}>
@@ -202,6 +195,5 @@ const Support = () => {
 }
 
 export default Support
-
 
 
