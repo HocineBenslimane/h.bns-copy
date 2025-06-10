@@ -4,11 +4,11 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import { Label } from '@/components/ui/label'
-import { 
-  Mail, 
-  Phone, 
-  MapPin, 
-  Clock, 
+import {
+  Mail,
+  Phone,
+  MapPin,
+  Clock,
   MessageCircle
 } from 'lucide-react'
 
@@ -20,27 +20,11 @@ const Support = () => {
     message: ''
   })
 
-  const handleContactSubmit = async (e) => {
-    e.preventDefault()
-    
-    const data = {
-      "form-name": "support-contact",
-      ...contactForm,
-    };
-
-    try {
-      await fetch("/", {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: new URLSearchParams(data).toString(),
-      });
-
-      alert("Thank you for your message! We will respond within 24 hours.");
-      setContactForm({ name: "", email: "", subject: "", message: "" });
-    } catch (error) {
-      console.error("Form submission error:", error);
-      alert("There was an error sending your message. Please try again or contact us directly.");
-    }
+  const handleContactSubmit = (e) => {
+    // Netlify will handle the submission directly, no need for e.preventDefault() or fetch
+    // This function can be used for client-side validation if needed before submission
+    // For now, we'll just reset the form after submission (handled by Netlify)
+    setContactForm({ name: "", email: "", subject: "", message: "" });
   };
 
   const handleContactChange = (field, value) => {
@@ -218,4 +202,6 @@ const Support = () => {
 }
 
 export default Support
+
+
 
