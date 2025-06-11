@@ -5,7 +5,7 @@ const Footer = () => {
   return (
     <footer className="bg-gray-900 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-8">
           {/* Company Info */}
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
@@ -139,9 +139,9 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Logo Column - Moved to the 4th column */}
-          <div className="lg:col-span-1 flex justify-end items-start">
-            <img src="/hbns-logo-footer.png" alt="H.BNS LLC Logo" className="h-32 w-auto" />
+          {/* Logo Column - New position */}
+          <div className="flex justify-end items-start">
+            <img src="/hbns-logo-footer.png" alt="H.BNS LLC Logo" className="h-40 w-auto" />
           </div>
         </div>
 
