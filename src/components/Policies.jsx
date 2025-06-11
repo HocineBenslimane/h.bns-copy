@@ -1,10 +1,11 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import { Button } from '@/components/ui/button'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@//components/ui/card'
+import { Button } from '@//components/ui/button'
 import { 
   RefreshCw,
   Shield,
   XCircle,
-  AlertTriangle
+  AlertTriangle,
+  Instagram
 } from 'lucide-react'
 
 const Policies = () => {
@@ -96,7 +97,7 @@ const Policies = () => {
           </CardHeader>
           <CardContent>
             <p className="text-gray-600 mb-4">
-              If you have a dispute regarding your purchase, please contact us first at support@hbnsllc.com. 
+              If you have a dispute regarding your purchase, please contact us first at <a href="mailto:refund@h-bns.shop" className="text-primary hover:underline">refund@h-bns.shop</a>. 
               We are committed to resolving issues fairly and promptly.
             </p>
             <p className="text-gray-600">
@@ -113,9 +114,15 @@ const Policies = () => {
             <p className="text-gray-600 mb-6">
               Our support team is here to help clarify any policy questions you may have.
             </p>
-            <Button size="lg" asChild>
+            <Button size="lg" asChild className="mb-4">
               <a href="/support">Contact Support</a>
             </Button>
+            <p className="text-gray-600 text-sm">
+              Follow us on Instagram for updates and inspiration:
+              <a href="https://www.instagram.com/hbns_llc" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline flex items-center justify-center mt-2">
+                <Instagram className="h-5 w-5 mr-2" /> @hbns_llc
+              </a>
+            </p>
           </CardContent>
         </Card>
       </div>
@@ -124,4 +131,5 @@ const Policies = () => {
 }
 
 export default Policies
+
 
