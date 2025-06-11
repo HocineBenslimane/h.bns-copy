@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { Palette, Mail, Phone, MapPin, ExternalLink } from 'lucide-react'
+import { Palette, Mail, Phone, MapPin, ExternalLink, Instagram } from 'lucide-react'
 
 const Footer = () => {
   return (
@@ -140,8 +140,16 @@ const Footer = () => {
           </div>
 
           {/* Logo Column - New position */}
-          <div className="flex justify-end items-start">
+          <div className="flex flex-col justify-end items-end space-y-4">
             <img src="/hbns-logo-footer.png" alt="H.BNS LLC Logo" className="h-40 w-auto" />
+            <a 
+              href="https://www.instagram.com/hbns_llc" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-gray-300 hover:text-white transition-colors inline-flex items-center text-sm"
+            >
+              <Instagram className="h-5 w-5 mr-2" /> @hbns_llc
+            </a>
           </div>
         </div>
 
