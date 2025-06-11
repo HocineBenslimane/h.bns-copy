@@ -107,8 +107,40 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Logo Column */}
-          <div className="space-y-4 flex justify-end items-start">
+          {/* Legal & Policies */}
+          <div className="space-y-4">
+            <h3 className="text-lg font-semibold">Legal & Policies</h3>
+            <ul className="space-y-2 text-sm">
+              <li>
+                <Link to="/legal" className="text-gray-300 hover:text-white transition-colors">
+                  Terms & Conditions
+                </Link>
+              </li>
+              <li>
+                <Link to="/legal" className="text-gray-300 hover:text-white transition-colors">
+                  Privacy Policy
+                </Link>
+              </li>
+              <li>
+                <Link to="/policies" className="text-gray-300 hover:text-white transition-colors">
+                  Return Policy
+                </Link>
+              </li>
+              <li>
+                <Link to="/policies" className="text-gray-300 hover:text-white transition-colors">
+                  Refund Policy
+                </Link>
+              </li>
+              <li>
+                <Link to="/legal" className="text-gray-300 hover:text-white transition-colors">
+                  Export Restrictions
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Logo Column - Moved to the 4th column */}
+          <div className="lg:col-span-1 flex justify-end items-start">
             <img src="/hbns-logo-footer.png" alt="H.BNS LLC Logo" className="h-32 w-auto" />
           </div>
         </div>
