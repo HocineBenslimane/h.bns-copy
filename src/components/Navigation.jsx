@@ -16,6 +16,7 @@ const Navigation = () => {
   const navItems = [
     { name: 'Home', path: '/' },
     { name: 'Products', path: '/products' },
+    { name: 'Merch', path: '/merch' }, // Added Merch link
     { name: 'Custom Designer', path: '/custom-designer' },
     { name: 'Support', path: '/support' }
   ]
@@ -74,7 +75,7 @@ const Navigation = () => {
             </DropdownMenu>
 
             <Button asChild>
-              <Link to="/#quote">Get Quote</Link>
+              <Link to="/get-a-quote">Get Quote</Link>
             </Button>
           </div>
 
@@ -120,7 +121,7 @@ const Navigation = () => {
                       location.pathname === item.path
                         ? 'text-primary bg-primary/10'
                         : 'text-gray-700 hover:text-primary hover:bg-primary/5'
-                    }`}
+                  }`}
                     onClick={() => setIsOpen(false)}
                   >
                     {item.name}
@@ -130,7 +131,7 @@ const Navigation = () => {
               
               <div className="px-3 py-2 border-t mt-2">
                 <Button asChild className="w-full">
-                  <Link to="/#quote" onClick={() => setIsOpen(false)}>Get Quote</Link>
+                  <Link to="/get-a-quote" onClick={() => setIsOpen(false)}>Get Quote</Link>
                 </Button>
               </div>
             </div>
