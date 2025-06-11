@@ -1,4 +1,4 @@
-import { Button } from '@/components/ui/button'
+import { Button } from '@//components/ui/button'
 import { ShoppingCart, Star, Award } from 'lucide-react'
 
 const products = [
@@ -43,6 +43,15 @@ const products = [
     name: 'Cat Lovers',
     imageUrl: 'https://m.media-amazon.com/images/I/B1pppR4gVKL._CLa%7C2140%2C2000%7C8190h0LSWCL.png%7C0%2C0%2C2140%2C2000%2B0.0%2C0.0%2C2140.0%2C2000.0_AC_SX466_.png',
     amazonLink: 'https://www.amazon.com/dp/B0CLM87Q7T',
+    isAmazonChoice: false,
+    rating: 5.0,
+    reviews: 1,
+  },
+  {
+    id: 'B0CK52GN8Y',
+    name: 'Funny Crochet Pun',
+    imageUrl: 'https://m.media-amazon.com/images/I/B1pppR4gVKL._CLa%7C2140%2C2000%7C91TsDUzA5sL.png%7C0%2C0%2C2140%2C2000%2B0.0%2C0.0%2C2140.0%2C2000.0_AC_SX466_.png',
+    amazonLink: 'https://www.amazon.com/dp/B0CK52GN8Y',
     isAmazonChoice: false,
     rating: 5.0,
     reviews: 1,
