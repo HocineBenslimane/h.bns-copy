@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { Palette, Mail, Phone, MapPin, ExternalLink, Instagram, Facebook, Twitter, Linkedin } from 'lucide-react'
+import { Palette, Mail, Phone, MapPin, ExternalLink, Instagram } from 'lucide-react'
 
 const Footer = () => {
   return (
@@ -140,37 +140,26 @@ const Footer = () => {
           </div>
 
           {/* Social Media & Newsletter */}
-          <div className="space-y-4">
+          <div className="space-y-4 lg:col-span-1">
             <h3 className="text-lg font-semibold">Connect With Us</h3>
-            <div className="flex space-x-4">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-4 sm:space-y-0 sm:space-x-4">
               <a href="https://www.instagram.com/hbns_llc" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-white transition-colors">
                 <Instagram className="h-6 w-6" />
               </a>
-              {/* Add other social media links here if needed */}
-              <a href="#" className="text-gray-300 hover:text-white transition-colors">
-                <Facebook className="h-6 w-6" />
-              </a>
-              <a href="#" className="text-gray-300 hover:text-white transition-colors">
-                <Twitter className="h-6 w-6" />
-              </a>
-              <a href="#" className="text-gray-300 hover:text-white transition-colors">
-                <Linkedin className="h-6 w-6" />
-              </a>
+              <form className="flex flex-col sm:flex-row gap-2">
+                <input 
+                  type="email" 
+                  placeholder="Your email address" 
+                  className="p-2 rounded-md bg-gray-800 border border-gray-700 text-white text-sm focus:outline-none focus:ring-2 focus:ring-primary"
+                />
+                <button 
+                  type="submit" 
+                  className="bg-primary hover:bg-primary-dark text-white font-semibold py-2 px-4 rounded-md transition-colors text-sm"
+                >
+                  Subscribe
+                </button>
+              </form>
             </div>
-            <h3 className="text-lg font-semibold mt-6">Newsletter</h3>
-            <form className="flex flex-col sm:flex-row gap-2">
-              <input 
-                type="email" 
-                placeholder="Your email address" 
-                className="p-2 rounded-md bg-gray-800 border border-gray-700 text-white text-sm focus:outline-none focus:ring-2 focus:ring-primary"
-              />
-              <button 
-                type="submit" 
-                className="bg-primary hover:bg-primary-dark text-white font-semibold py-2 px-4 rounded-md transition-colors text-sm"
-              >
-                Subscribe
-              </button>
-            </form>
           </div>
         </div>
 
