@@ -5,52 +5,47 @@ const products = [
   {
     id: 'B09VK9LL25',
     name: 'Tacos Fiesta Cinco De Mayo',
-    description: 'Premium quality t-shirt featuring a unique "Creative Flow" design, perfect for artists and designers. Soft, comfortable, and durable.',
     imageUrl: 'https://m.media-amazon.com/images/I/B1pppR4gVKL._CLa%7C2140%2C2000%7C81tWoQXdGtL.png%7C0%2C0%2C2140%2C2000%2B0.0%2C0.0%2C2140.0%2C2000.0_AC_SX679_.png',
     amazonLink: 'https://www.amazon.com/dp/B09VK9LL25',
     isAmazonChoice: true,
-    rating: 4.5,
-    reviews: 120,
+    rating: 4.6,
+    reviews: 60,
   },
   {
     id: 'B0DK7VKV4X',
     name: 'Adults Dirty Jokes couple dancing',
-    description: 'Cozy and stylish hoodie from the "Artistic Vision" collection. Ideal for everyday wear, showcasing your passion for art.',
     imageUrl: 'https://m.media-amazon.com/images/I/B1pppR4gVKL._CLa%7C2140%2C2000%7C61unAa909pL.png%7C0%2C0%2C2140%2C2000%2B0.0%2C0.0%2C2140.0%2C2000.0_AC_SX679_.png',
     amazonLink: 'https://www.amazon.com/dp/B0DK7VKV4X',
     isAmazonChoice: false,
-    rating: 4.0,
-    reviews: 85,
+    rating: null,
+    reviews: null,
   },
   {
     id: 'B0CMGMHZWR',
     name: 'Frog Art Cottagecore',
-    description: 'Start your day with inspiration! This durable ceramic mug features a vibrant design, perfect for your favorite beverage.',
     imageUrl: 'https://m.media-amazon.com/images/I/A1dbsmzbGeL._CLa%7C2140%2C2000%7C71YzDykG5bL.png%7C0%2C0%2C2140%2C2000%2B0.0%2C0.0%2C2140.0%2C2000.0_AC_SX466_.png',
     amazonLink: 'https://www.amazon.com/dp/B0CMGMHZWR',
     isAmazonChoice: false,
-    rating: 5.0,
-    reviews: 200,
+    rating: 4.7,
+    reviews: 10,
   },
   {
     id: 'B0FCHNP51S',
     name: 'Life is BDSM',
-    description: 'Protect your phone in style with this "Digital Dreamscape" phone case. Slim, protective, and visually stunning.',
     imageUrl: 'https://m.media-amazon.com/images/I/B1o1VhcDoEL._CLa%7C2140%2C2000%7C71tw%2BcVmj9L.png%7C0%2C0%2C2140%2C2000%2B0.0%2C0.0%2C2140.0%2C2000.0_AC_SX679_.png',
     amazonLink: 'https://www.amazon.com/dp/B0FCHNP51S',
     isAmazonChoice: false,
-    rating: 3.5,
-    reviews: 50,
+    rating: null,
+    reviews: null,
   },
   {
     id: 'B0CLM87Q7T',
     name: 'Cat Lovers',
-    description: 'A versatile tote bag for all your creative essentials. Durable and spacious, with an eye-catching design.',
     imageUrl: 'https://m.media-amazon.com/images/I/B1pppR4gVKL._CLa%7C2140%2C2000%7C8190h0LSWCL.png%7C0%2C0%2C2140%2C2000%2B0.0%2C0.0%2C2140.0%2C2000.0_AC_SX466_.png',
     amazonLink: 'https://www.amazon.com/dp/B0CLM87Q7T',
     isAmazonChoice: false,
-    rating: 4.8,
-    reviews: 150,
+    rating: 5.0,
+    reviews: 1,
   },
 ]
 
@@ -75,17 +70,18 @@ const Merch = () => {
               <img src={product.imageUrl} alt={product.name} className="w-full h-64 object-contain" />
               <div className="p-6">
                 <h2 className="text-xl font-semibold text-gray-900 mb-2">{product.name}</h2>
-                <p className="text-gray-600 text-sm mb-4">{product.description}</p>
-                <div className="flex items-center mb-4">
-                  {Array.from({ length: 5 }).map((_, i) => (
-                    <Star
-                      key={i}
-                      className={`h-5 w-5 ${product.rating >= i + 1 ? 'text-yellow-400' : product.rating >= i + 0.5 ? 'text-yellow-400 fill-current' : 'text-gray-300'}`}
-                      fill={product.rating >= i + 1 || product.rating >= i + 0.5 ? 'currentColor' : 'none'}
-                    />
-                  ))}
-                  <span className="ml-2 text-gray-600 text-sm">({product.reviews} reviews)</span>
-                </div>
+                {product.rating !== null && product.reviews !== null && (
+                  <div className="flex items-center mb-4">
+                    {Array.from({ length: 5 }).map((_, i) => (
+                      <Star
+                        key={i}
+                        className={`h-5 w-5 ${product.rating >= i + 1 ? 'text-yellow-400' : product.rating >= i + 0.5 ? 'text-yellow-400 fill-current' : 'text-gray-300'}`}
+                        fill={product.rating >= i + 1 || product.rating >= i + 0.5 ? 'currentColor' : 'none'}
+                      />
+                    ))}
+                    <span className="ml-2 text-gray-600 text-sm">({product.reviews} reviews)</span>
+                  </div>
+                )}
                 {product.isAmazonChoice && (
                   <div className="inline-flex items-center bg-yellow-100 text-yellow-800 text-xs font-semibold px-2.5 py-0.5 rounded-full mb-4">
                     <Award className="h-3 w-3 mr-1" /> Amazon's Choice
