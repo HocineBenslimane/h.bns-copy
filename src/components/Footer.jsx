@@ -142,7 +142,7 @@ const Footer = () => {
           {/* Social Media & Newsletter */}
           <div className="space-y-4 lg:col-span-1">
             <h3 className="text-lg font-semibold">Connect With Us</h3>
-            <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-4 sm:space-y-0 sm:space-x-4">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-4 sm:space-y-0 sm:space-x-8">
               <a href="https://www.instagram.com/hbns_llc" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-white transition-colors">
                 <Instagram className="h-6 w-6" />
               </a>
