@@ -1,13 +1,13 @@
 import { Link } from 'react-router-dom'
-import { Palette, Mail, Phone, MapPin, ExternalLink, Instagram } from 'lucide-react'
+import { Palette, Mail, Phone, MapPin, ExternalLink, Instagram, Facebook, Twitter, Linkedin } from 'lucide-react'
 
 const Footer = () => {
   return (
     <footer className="bg-gray-900 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
           {/* Company Info */}
-          <div className="space-y-4">
+          <div className="col-span-1 md:col-span-2 lg:col-span-2 space-y-4">
             <div className="flex items-center space-x-2">
               <Palette className="h-8 w-8 text-primary" />
               <span className="text-2xl font-bold">H.BNS</span>
@@ -139,17 +139,38 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Logo Column - New position */}
-          <div className="flex flex-col justify-end items-end space-y-4">
-            <img src="/hbns-logo-footer.png" alt="H.BNS LLC Logo" className="h-40 w-auto" />
-            <a 
-              href="https://www.instagram.com/hbns_llc" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="text-gray-300 hover:text-white transition-colors inline-flex items-center text-sm"
-            >
-              <Instagram className="h-5 w-5 mr-2" /> @hbns_llc
-            </a>
+          {/* Social Media & Newsletter */}
+          <div className="space-y-4">
+            <h3 className="text-lg font-semibold">Connect With Us</h3>
+            <div className="flex space-x-4">
+              <a href="https://www.instagram.com/hbns_llc" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-white transition-colors">
+                <Instagram className="h-6 w-6" />
+              </a>
+              {/* Add other social media links here if needed */}
+              <a href="#" className="text-gray-300 hover:text-white transition-colors">
+                <Facebook className="h-6 w-6" />
+              </a>
+              <a href="#" className="text-gray-300 hover:text-white transition-colors">
+                <Twitter className="h-6 w-6" />
+              </a>
+              <a href="#" className="text-gray-300 hover:text-white transition-colors">
+                <Linkedin className="h-6 w-6" />
+              </a>
+            </div>
+            <h3 className="text-lg font-semibold mt-6">Newsletter</h3>
+            <form className="flex flex-col sm:flex-row gap-2">
+              <input 
+                type="email" 
+                placeholder="Your email address" 
+                className="p-2 rounded-md bg-gray-800 border border-gray-700 text-white text-sm focus:outline-none focus:ring-2 focus:ring-primary"
+              />
+              <button 
+                type="submit" 
+                className="bg-primary hover:bg-primary-dark text-white font-semibold py-2 px-4 rounded-md transition-colors text-sm"
+              >
+                Subscribe
+              </button>
+            </form>
           </div>
         </div>
 
@@ -159,6 +180,8 @@ const Footer = () => {
             <div className="text-sm text-gray-400">
               © 2025 H.BNS LLC. All rights reserved.
             </div>
+            {/* Logo - Moved to bottom right */}
+            <img src="/hbns-logo-footer.png" alt="H.BNS LLC Logo" className="h-20 w-auto" />
           </div>
         </div>
       </div>
