@@ -9,6 +9,7 @@ import FAQ from './components/FAQ'
 import Policies from './components/Policies'
 import Legal from './components/Legal'
 import PaymentTerms from './components/PaymentTerms'
+import QuoteForm from './components/QuoteForm' // Import the new QuoteForm component
 import Footer from './components/Footer'
 import './App.css'
 
@@ -26,6 +27,7 @@ function App() {
           <Route path="/policies" element={<Policies />} />
           <Route path="/legal" element={<Legal />} />
           <Route path="/payment-terms" element={<PaymentTerms />} />
+          <Route path="/get-a-quote" element={<QuoteForm />} /> {/* Add route for QuoteForm */}
         </Routes>
         <Footer />
       </div>

@@ -1,85 +1,30 @@
 import { useState } from 'react'
 import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
-import { Textarea } from '@/components/ui/textarea'
-import { Label } from '@/components/ui/label'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
-import { Palette, Star, Users, Award, ArrowRight, Lightbulb, MessageSquare, Paintbrush, CheckCircle, User, Mail, Phone, Clock, DollarSign, FileText, Sparkles } from 'lucide-react'
-import { Link } from 'react-router-dom' // Import Link
+import { Palette, Star, Users, Award, ArrowRight, Lightbulb, Eye, Zap, Heart, CheckCircle, Sparkles, Play } from 'lucide-react'
+import { Link } from 'react-router-dom'
 
 const Hero = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    projectType: '',
-    budget: '',
-    description: '',
-    timeline: ''
-  })
-
-  const [isSubmitted, setIsSubmitted] = useState(false)
-
-  const handleSubmit = async (e) => {
-    e.preventDefault(); // Prevent default React form submission
-
-    // Create a new FormData object from the current form data
-    const form = e.target;
-    const formDataToSend = new FormData();
-    for (const key in formData) {
-      formDataToSend.append(key, formData[key]);
-    }
-
-    // Append the Netlify form-name for identification
-    formDataToSend.append("form-name", "quote-request");
-
-    // Submit the form to Netlify
-       try {
-      await fetch("/", {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: new URLSearchParams(formDataToSend).toString(),
-      });
-      console.log("Form successfully submitted to Netlify!");
-      setIsSubmitted(true);
-
-      // Reset form after 3 seconds
-      setTimeout(() => {
-        setIsSubmitted(false);
-        setFormData({
-          name: "",
-          email: "",
-          phone: "",
-          projectType: "",
-          budget: "",
-          description: "",
-          timeline: "",
-        });
-      }, 3000);    } catch (error) {
-      console.error("Form submission error:", error);
-      alert("There was an error submitting your form. Please try again later.");
-    }
-  };
-
-  const handleChange = (field, value) => {
-    setFormData(prev => ({ ...prev, [field]: value }))
-  }
-
   return (
     <div className="min-h-screen">
-      {/* Hero Section */}
+      {/* Hero Section with Hook */}
       <section className="bg-gradient-to-br from-primary/5 via-white to-accent/5 py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-8">
-              <div className="space-y-4">
+              <div className="space-y-6">
+                <div className="inline-flex items-center px-4 py-2 bg-primary/10 rounded-full text-primary font-semibold text-sm">
+                  <Sparkles className="h-4 w-4 mr-2" />
+                  Trusted by 500+ Happy Clients
+                </div>
                 <h1 className="text-4xl md:text-6xl font-bold text-gray-900 leading-tight">
-                  Custom <span className="text-primary">Illustrations</span> That Tell Your Story
+                  Turn Your <span className="text-primary">Vision</span> Into 
+                  <span className="block text-transparent bg-clip-text bg-gradient-to-r from-primary to-purple-600">
+                    Stunning Art
+                  </span>
                 </h1>
                 <p className="text-xl text-gray-600 leading-relaxed">
-                  Professional illustration services from logos to character designs. 
-                  Transform your ideas into stunning visual art with H.BNS LLC.
+                  From concept to creation, we bring your ideas to life with professional 
+                  custom illustrations that captivate, inspire, and deliver results.
                 </p>
               </div>
 
@@ -95,349 +40,174 @@ const Hero = () => {
                 <div className="flex items-center space-x-2">
                   <Award className="h-5 w-5 text-green-500" />
                   <span className="text-sm font-medium">Professional Quality</span>
-                
                 </div>
               </div>
 
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button size="lg" className="group" asChild>
-                  <a href="https://www.behance.net/djawedbns" target="_blank" rel="noopener noreferrer">
-                    View Our Work
+                <Button size="lg" className="group bg-gradient-to-r from-primary to-purple-600 hover:from-primary/90 hover:to-purple-700" asChild>
+                  <Link to="/get-a-quote">
+                    Get Your Free Quote
                     <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                  </a>
-                </Button>
-                <Button variant="outline" size="lg" asChild>
-                  <Link to="/payment-terms">
-                    Learn More
                   </Link>
+                </Button>
+                <Button variant="outline" size="lg" className="group" asChild>
+                  <a href="https://www.behance.net/djawedbns" target="_blank" rel="noopener noreferrer">
+                    <Play className="mr-2 h-4 w-4" />
+                    View Our Work
+                  </a>
                 </Button>
               </div>
             </div>
 
-            {/* Enhanced Quote Request Form */}
-            <Card className="shadow-2xl border-0 bg-gradient-to-br from-white to-gray-50/50 backdrop-blur-sm">
-              <CardHeader className="text-center pb-6">
-                <CardTitle className="flex items-center justify-center space-x-3 text-2xl">
-                  <div className="p-2 bg-primary/10 rounded-full">
-                    <Sparkles className="h-6 w-6 text-primary" />
+            {/* Visual Hook - Features Grid */}
+            <div className="grid grid-cols-2 gap-6">
+              <div className="space-y-6">
+                <div className="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
+                  <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mb-4">
+                    <Eye className="h-6 w-6 text-blue-600" />
                   </div>
-                  <span>Get Your Custom Quote</span>
-                </CardTitle>
-                <CardDescription className="text-base leading-relaxed">
-                  <span className="font-semibold text-primary">✨ Free consultation included!</span><br />
-                  Share your vision with us and receive a detailed quote within 24 hours. 
-                  No commitment required.
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-6">
-                {!isSubmitted ? (
-                  <form onSubmit={handleSubmit} className="space-y-6" id="quote" name="quote-request" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-                    {/* Hidden field for Netlify */}
-                    <input type="hidden" name="form-name" value="quote-request" />
-                    {/* Honeypot field for spam protection */}
-                    <div style={{ display: 'none' }}>
-                      <label>Don't fill this out if you're human: <input name="bot-field" /></label>
-                    </div>
-                    {/* Contact Information Section */}
-                    <div className="space-y-4">
-                      <div className="flex items-center space-x-2 text-sm font-semibold text-gray-700 border-b border-gray-200 pb-2">
-                        <User className="h-4 w-4 text-primary" />
-                        <span>Contact Information</span>
-                      </div>
-                      
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div className="space-y-2">
-                          <Label htmlFor="name" className="flex items-center space-x-1">
-                            <User className="h-3 w-3 text-gray-500" />
-                            <span>Full Name *</span>
-                          </Label>
-                          <Input
-                            id="name"
-                            name="name"
-                            placeholder="e.g., John Smith"
-                            value={formData.name}
-                            onChange={(e) => handleChange('name', e.target.value)}
-                            className="transition-all duration-200 focus:ring-2 focus:ring-primary/20"
-                            required
-                          />
-                        </div>
-                        <div className="space-y-2">
-                          <Label htmlFor="email" className="flex items-center space-x-1">
-                            <Mail className="h-3 w-3 text-gray-500" />
-                            <span>Email Address *</span>
-                          </Label>
-                          <Input
-                            id="email"
-                            name="email"
-                            type="email"
-                            placeholder="john@example.com"
-                            value={formData.email}
-                            onChange={(e) => handleChange('email', e.target.value)}
-                            className="transition-all duration-200 focus:ring-2 focus:ring-primary/20"
-                            required
-                          />
-                        </div>
-                      </div>
-
-                      <div className="space-y-2">
-                        <Label htmlFor="phone" className="flex items-center space-x-1">
-                          <Phone className="h-3 w-3 text-gray-500" />
-                          <span>Phone Number</span>
-                          <span className="text-xs text-gray-400">(optional)</span>
-                        </Label>
-                        <Input
-                          id="phone"
-                          name="phone"
-                          type="tel"
-                          placeholder="+1 (555) 123-4567"
-                          value={formData.phone}
-                          onChange={(e) => handleChange('phone', e.target.value)}
-                          className="transition-all duration-200 focus:ring-2 focus:ring-primary/20"
-                        />
-                      </div>
-                    </div>
-
-                    {/* Project Details Section */}
-                    <div className="space-y-4">
-                      <div className="flex items-center space-x-2 text-sm font-semibold text-gray-700 border-b border-gray-200 pb-2">
-                        <Palette className="h-4 w-4 text-primary" />
-                        <span>Project Details</span>
-                      </div>
-
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div className="space-y-2">
-                          <Label htmlFor="projectType" className="flex items-center space-x-1">
-                            <FileText className="h-3 w-3 text-gray-500" />
-                            <span>Project Type *</span>
-                          </Label>
-                          <Select name="projectType" onValueChange={(value) => handleChange('projectType', value)}>
-                            <SelectTrigger className="transition-all duration-200 focus:ring-2 focus:ring-primary/20">
-                              <SelectValue placeholder="What do you need?" />
-                            </SelectTrigger>
-                            <SelectContent>
-                              <SelectItem value="logo">🎨 Logo Design</SelectItem>
-                              <SelectItem value="character">👤 Character Design</SelectItem>
-                              <SelectItem value="illustration">🖼️ Custom Illustration</SelectItem>
-                              <SelectItem value="book-cover">📚 Book Cover</SelectItem>
-                              <SelectItem value="branding">📦 Branding Package</SelectItem>
-                              <SelectItem value="other">✨ Other (specify in description)</SelectItem>
-                            </SelectContent>
-                          </Select>
-                          {/* Hidden input for Netlify form submission */}
-                          <input type="hidden" name="projectType" value={formData.projectType} />
-                        </div>
-                        <div className="space-y-2">
-                          <Label htmlFor="budget" className="flex items-center space-x-1">
-                            <DollarSign className="h-3 w-3 text-gray-500" />
-                            <span>Budget Range</span>
-                            <span className="text-xs text-gray-400">(helps us tailor our proposal)</span>
-                          </Label>
-                          <Select name="budget" onValueChange={(value) => handleChange('budget', value)}>
-                            <SelectTrigger className="transition-all duration-200 focus:ring-2 focus:ring-primary/20">
-                              <SelectValue placeholder="Select your budget" />
-                            </SelectTrigger>
-                            <SelectContent>
-                              <SelectItem value="under-500">💰 Under $500</SelectItem>
-                              <SelectItem value="500-1000">💰💰 $500 - $1,000</SelectItem>
-                              <SelectItem value="1000-2500">💰💰💰 $1,000 - $2,500</SelectItem>
-                              <SelectItem value="2500-5000">💰💰💰💰 $2,500 - $5,000</SelectItem>
-                              <SelectItem value="over-5000">💰💰💰💰💰 Over $5,000</SelectItem>
-                              <SelectItem value="discuss">💬 Let's discuss</SelectItem>
-                            </SelectContent>
-                          </Select>
-                          {/* Hidden input for Netlify form submission */}
-                          <input type="hidden" name="budget" value={formData.budget} />
-                        </div>
-                      </div>
-
-                      <div className="space-y-2">
-                        <Label htmlFor="timeline" className="flex items-center space-x-1">
-                          <Clock className="h-3 w-3 text-gray-500" />
-                          <span>Preferred Timeline</span>
-                          <span className="text-xs text-gray-400">(rush orders available)</span>
-                        </Label>
-                        <Select name="timeline" onValueChange={(value) => handleChange('timeline', value)}>
-                          <SelectTrigger className="transition-all duration-200 focus:ring-2 focus:ring-primary/20">
-                            <SelectValue placeholder="When do you need this?" />
-                          </SelectTrigger>
-                          <SelectContent>
-                            <SelectItem value="rush">⚡ Rush (1-3 days) +50% fee</SelectItem>
-                            <SelectItem value="standard">🚀 Standard (1-2 weeks)</SelectItem>
-                            <SelectItem value="extended">📅 Extended (2-4 weeks)</SelectItem>
-                            <SelectItem value="flexible">🕐 Flexible timeline</SelectItem>
-                          </SelectContent>
-                        </Select>
-                        {/* Hidden input for Netlify form submission */}
-                        <input type="hidden" name="timeline" value={formData.timeline} />
-                      </div>
-
-                      <div className="space-y-2">
-                        <Label htmlFor="description" className="flex items-center space-x-1">
-                          <MessageSquare className="h-3 w-3 text-gray-500" />
-                          <span>Project Description *</span>
-                        </Label>
-                        <Textarea
-                          id="description"
-                          name="description"
-                          placeholder="Tell us about your vision! Include details like:
-• Style preferences (realistic, cartoon, minimalist, etc.)
-• Color schemes or mood
-• Intended use (website, print, social media, etc.)
-• Any reference images or inspiration
-• Specific requirements or must-haves
-
-The more details you provide, the better we can serve you!"
-                          value={formData.description}
-                          onChange={(e) => handleChange('description', e.target.value)}
-                          rows={6}
-                          className="transition-all duration-200 focus:ring-2 focus:ring-primary/20 resize-none"
-                          required
-                        />
-                        <p className="text-xs text-gray-500 flex items-center space-x-1">
-                          <Lightbulb className="h-3 w-3" />
-                          <span>Pro tip: The more details you share, the more accurate your quote will be!</span>
-                        </p>
-                      </div>
-                    </div>
-
-                    <div className="pt-4 border-t border-gray-200">
-                      <Button type="submit" className="w-full group text-lg py-6 bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary shadow-lg hover:shadow-xl transition-all duration-300" size="lg">
-                        <Sparkles className="mr-2 h-5 w-5 group-hover:rotate-12 transition-transform" />
-                        Get My Free Quote
-                        <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-                      </Button>
-                      <p className="text-xs text-center text-gray-500 mt-3">
-                        🔒 Your information is secure and will never be shared. Response within 24 hours guaranteed.
-                      </p>
-                    </div>
-                  </form>
-                ) : (
-                  <div className="text-center py-12 space-y-4">
-                    <div className="mx-auto w-16 h-16 bg-green-100 rounded-full flex items-center justify-center">
-                      <CheckCircle className="h-8 w-8 text-green-600" />
-                    </div>
-                    <h3 className="text-xl font-semibold text-gray-900">Quote Request Sent!</h3>
-                    <p className="text-gray-600 max-w-sm mx-auto">
-                      Thank you for choosing H.BNS LLC! We've received your request and will send you a detailed quote within 24 hours.
-                    </p>
-                    <div className="flex items-center justify-center space-x-2 text-sm text-primary">
-                      <Mail className="h-4 w-4" />
-                      <span>Check your email for confirmation</span>
-                    </div>
+                  <h3 className="font-semibold text-gray-900 mb-2">Unique Vision</h3>
+                  <p className="text-gray-600 text-sm">Every project is crafted with your unique brand and story in mind</p>
+                </div>
+                <div className="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
+                  <div className="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center mb-4">
+                    <CheckCircle className="h-6 w-6 text-green-600" />
                   </div>
-                )}
-              </CardContent>
-            </Card>
+                  <h3 className="font-semibold text-gray-900 mb-2">Guaranteed Quality</h3>
+                  <p className="text-gray-600 text-sm">Professional results with unlimited revisions until perfect</p>
+                </div>
+              </div>
+              <div className="space-y-6 pt-12">
+                <div className="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
+                  <div className="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center mb-4">
+                    <Zap className="h-6 w-6 text-purple-600" />
+                  </div>
+                  <h3 className="font-semibold text-gray-900 mb-2">Fast Delivery</h3>
+                  <p className="text-gray-600 text-sm">Quick turnaround times without compromising on quality</p>
+                </div>
+                <div className="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
+                  <div className="w-12 h-12 bg-red-100 rounded-xl flex items-center justify-center mb-4">
+                    <Heart className="h-6 w-6 text-red-600" />
+                  </div>
+                  <h3 className="font-semibold text-gray-900 mb-2">Personal Touch</h3>
+                  <p className="text-gray-600 text-sm">Direct collaboration with experienced artists who care</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* How It Works Section */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              How Our Custom Illustration Process Works
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Simple steps to bring your unique vision to life
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <Card className="text-center p-6 shadow-md">
-              <CardContent className="space-y-4">
-                <Lightbulb className="h-12 w-12 text-primary mx-auto" />
-                <h3 className="text-xl font-semibold">1. Share Your Idea</h3>
-                <p className="text-gray-600 text-sm">
-                  Fill out our quick quote request form with details about your project, style preferences, and budget.
-                </p>
-              </CardContent>
-            </Card>
-            <Card className="text-center p-6 shadow-md">
-              <CardContent className="space-y-4">
-                <MessageSquare className="h-12 w-12 text-primary mx-auto" />
-                <h3 className="text-xl font-semibold">2. Get a Personalized Quote</h3>
-                <p className="text-gray-600 text-sm">
-                  We'll review your request and send you a detailed quote and timeline within 24 hours.
-                </p>
-              </CardContent>
-            </Card>
-            <Card className="text-center p-6 shadow-md">
-              <CardContent className="space-y-4">
-                <Paintbrush className="h-12 w-12 text-primary mx-auto" />
-                <h3 className="text-xl font-semibold">3. Illustration & Revisions</h3>
-                <p className="text-gray-600 text-sm">
-                  Our artists will create your custom illustration. We offer revisions to ensure your complete satisfaction.
-                </p>
-              </CardContent>
-            </Card>
-            <Card className="text-center p-6 shadow-md">
-              <CardContent className="space-y-4">
-                <CheckCircle className="h-12 w-12 text-primary mx-auto" />
-                <h3 className="text-xl font-semibold">4. Final Delivery</h3>
-                <p className="text-gray-600 text-sm">
-                  Receive your high-quality custom illustration in your preferred format, ready for use.
-                </p>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* Services Overview */}
+      {/* Services Overview Section */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Our Illustration Services
+              What We Create
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              From concept to completion, we bring your vision to life with professional quality illustrations
+              From logos to characters, book covers to branding packages - we bring your creative vision to life
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              {
-                title: "Logo Design",
-                description: "Professional logos that represent your brand identity",
-                icon: "🎨"
-              },
-              {
-                title: "Character Design",
-                description: "Unique characters for games, books, and marketing",
-                icon: "👤"
-              },
-              {
-                title: "Book Covers",
-                description: "Eye-catching covers that sell your story",
-                icon: "📚"
-              },
-              {
-                title: "Custom Illustrations",
-                description: "Bespoke artwork for any purpose or medium",
-                icon: "🖼️"
-              },
-              {
-                title: "Branding Packages",
-                description: "Complete visual identity solutions",
-                icon: "📦"
-              },
-              {
-                title: "Digital Art",
-                description: "Modern digital illustrations and graphics",
-                icon: "💻"
-              }
-            ].map((service, index) => (
-              <Card key={index} className="hover:shadow-lg transition-shadow duration-300">
-                <CardContent className="p-6 text-center">
-                  <div className="text-4xl mb-4">{service.icon}</div>
-                  <h3 className="text-xl font-semibold mb-2">{service.title}</h3>
-                  <p className="text-gray-600">{service.description}</p>
-                </CardContent>
-              </Card>
-            ))}
+            <div className="group bg-gradient-to-br from-blue-50 to-blue-100 p-8 rounded-2xl hover:shadow-lg transition-all">
+              <div className="text-4xl mb-4">🎨</div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-3">Logo Design</h3>
+              <p className="text-gray-600 mb-4">Professional logos that represent your brand identity</p>
+              <div className="text-blue-600 font-medium group-hover:text-blue-700">Starting at $299</div>
+            </div>
+
+            <div className="group bg-gradient-to-br from-purple-50 to-purple-100 p-8 rounded-2xl hover:shadow-lg transition-all">
+              <div className="text-4xl mb-4">👤</div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-3">Character Design</h3>
+              <p className="text-gray-600 mb-4">Unique characters for games, books, and marketing</p>
+              <div className="text-purple-600 font-medium group-hover:text-purple-700">Starting at $399</div>
+            </div>
+
+            <div className="group bg-gradient-to-br from-green-50 to-green-100 p-8 rounded-2xl hover:shadow-lg transition-all">
+              <div className="text-4xl mb-4">📚</div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-3">Book Covers</h3>
+              <p className="text-gray-600 mb-4">Eye-catching covers that sell your story</p>
+              <div className="text-green-600 font-medium group-hover:text-green-700">Starting at $249</div>
+            </div>
+
+            <div className="group bg-gradient-to-br from-orange-50 to-orange-100 p-8 rounded-2xl hover:shadow-lg transition-all">
+              <div className="text-4xl mb-4">🖼️</div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-3">Custom Illustrations</h3>
+              <p className="text-gray-600 mb-4">Bespoke artwork for any purpose or medium</p>
+              <div className="text-orange-600 font-medium group-hover:text-orange-700">Starting at $199</div>
+            </div>
+
+            <div className="group bg-gradient-to-br from-pink-50 to-pink-100 p-8 rounded-2xl hover:shadow-lg transition-all">
+              <div className="text-4xl mb-4">📦</div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-3">Branding Packages</h3>
+              <p className="text-gray-600 mb-4">Complete visual identity solutions</p>
+              <div className="text-pink-600 font-medium group-hover:text-pink-700">Starting at $799</div>
+            </div>
+
+            <div className="group bg-gradient-to-br from-indigo-50 to-indigo-100 p-8 rounded-2xl hover:shadow-lg transition-all">
+              <div className="text-4xl mb-4">💻</div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-3">Digital Art</h3>
+              <p className="text-gray-600 mb-4">Modern digital illustrations and graphics</p>
+              <div className="text-indigo-600 font-medium group-hover:text-indigo-700">Starting at $149</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Call to Action Section */}
+      <section className="bg-gradient-to-r from-primary via-purple-600 to-indigo-600 text-white py-20">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className="space-y-8">
+            <div className="space-y-4">
+              <h2 className="text-3xl md:text-5xl font-bold leading-tight">
+                Ready to Bring Your Vision to Life?
+              </h2>
+              <p className="text-xl text-white/90 max-w-2xl mx-auto">
+                Join 500+ satisfied clients who've transformed their ideas into stunning visual art. 
+                Get your free consultation today!
+              </p>
+            </div>
+
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <Button 
+                size="xl" 
+                className="bg-white text-primary hover:bg-gray-100 font-bold py-4 px-8 rounded-full shadow-lg transform transition-all hover:scale-105 group"
+                asChild
+              >
+                <Link to="/get-a-quote">
+                  <Sparkles className="mr-2 h-5 w-5" />
+                  Get Your Free Quote
+                  <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                </Link>
+              </Button>
+              <Button 
+                variant="outline" 
+                size="xl"
+                className="border-white text-white hover:bg-white hover:text-primary font-bold py-4 px-8 rounded-full"
+                asChild
+              >
+                <a href="https://www.behance.net/djawedbns" target="_blank" rel="noopener noreferrer">
+                  View Portfolio
+                </a>
+              </Button>
+            </div>
+
+            <div className="flex flex-wrap justify-center gap-8 pt-8 border-t border-white/20">
+              <div className="text-center">
+                <div className="text-2xl font-bold">24hrs</div>
+                <div className="text-white/80 text-sm">Response Time</div>
+              </div>
+              <div className="text-center">
+                <div className="text-2xl font-bold">Free</div>
+                <div className="text-white/80 text-sm">Consultation</div>
+              </div>
+              <div className="text-center">
+                <div className="text-2xl font-bold">100%</div>
+                <div className="text-white/80 text-sm">Satisfaction</div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
