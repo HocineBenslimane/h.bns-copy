@@ -147,7 +147,7 @@ const Footer = () => {
               © 2025 H.BNS LLC. All rights reserved.
             </div>
             <div className="text-sm text-gray-400">
-              Professional illustration services and digital products
+              <img src="/hbns-logo-footer.png" alt="H.BNS LLC Logo" className="h-12 w-auto" />
             </div>
           </div>
         </div>
@@ -157,4 +157,5 @@ const Footer = () => {
 }
 
 export default Footer
+
 
