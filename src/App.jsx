@@ -1,3 +1,4 @@
+import ChatBot from "react-chatbotify";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { useState } from 'react'
 import Navigation from './components/Navigation'
@@ -19,6 +20,7 @@ function App() {
     <Router>
       <div className="min-h-screen bg-background">
         <Navigation />
+        <ChatBot />
         <Routes>
           <Route path="/" element={<Hero />} />
           <Route path="/products" element={<Products />} />
