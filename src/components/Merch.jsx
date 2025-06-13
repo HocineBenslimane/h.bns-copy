@@ -1,4 +1,4 @@
-import { Button } from '@//components/ui/button'
+import { Button } from '@/components/ui/button'
 import { ShoppingCart, Star, Award } from 'lucide-react'
 
 const products = [
@@ -111,5 +111,3 @@ const Merch = () => {
 }
 
 export default Merch
-
-
