@@ -119,6 +119,31 @@
   }
 }
 
+/* Custom animations */
+@keyframes gradient {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient 3s ease infinite;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Enhanced button hover effects */
+.group:hover .group-hover\:animate-spin {
+  animation: spin 1s linear infinite;
+}
+
 /* Chatbot styling fixes */
 .rcb-chat-bot * {
   -webkit-font-smoothing: antialiased;
@@ -144,10 +169,46 @@
   -moz-osx-font-smoothing: grayscale !important;
 }
 
-
-
 .rcb-close-chat-icon,
 .rcb-notification-icon-on {
   fill: #FFFFFF;
 }
 
+/* Loading animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeInUp {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+/* Improved focus states */
+.focus-visible\:ring-primary\/20:focus-visible {
+  --tw-ring-color: rgb(var(--primary) / 0.2);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
