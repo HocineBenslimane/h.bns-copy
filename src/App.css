@@ -144,3 +144,10 @@
   -moz-osx-font-smoothing: grayscale !important;
 }
 
+
+
+.rcb-close-chat-icon,
+.rcb-notification-icon-on {
+  fill: #FFFFFF;
+}
+

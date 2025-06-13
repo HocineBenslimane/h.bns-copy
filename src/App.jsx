@@ -253,18 +253,23 @@ function App() {
   };
 
   const settings = {
+    chatInput: {
+      enabledPlaceholderText: "What can we help you with ?",
+      showCharacterCount: false
+    },
     general: {
-      primaryColor: "#6366f1",
-      secondaryColor: "#f3f4f6",
+      primaryColor: "#E39A97",
+      secondaryColor: "#B85340",
       fontFamily: "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
-      fontSize: 14
+      fontSize: 14,
+      showFooter: false
     },
     chatHistory: {
       storageKey: "hbns_chat_history"
     },
     header: {
       title: "H.BNS Support",
-      showAvatar: true,
+      showAvatar: false,
       avatar: "🎨"
     },
     chatButton: {
@@ -272,21 +277,66 @@ function App() {
     },
     userBubble: {
       animate: true,
-      showAvatar: false
+      showAvatar: false,
+      backgroundColor: "#E39A97",
+      color: "#FFFFFF",
+      borderRadius: "18px 18px 4px 18px",
+      boxShadow: "0px 4px 4px #00000040"
     },
     botBubble: {
       animate: true,
       showAvatar: true,
-      avatar: "🎨"
-    },
-    chatInput: {
-      enabledPlaceholderText: "Type your message...",
-      showCharacterCount: false
+      avatar: "🎨",
+      color: "#FFFFFF",
+      borderRadius: "18px 18px 18px 4px",
+      backgroundColor: "#E39A97",
+      padding: "10px 14px",
+      boxShadow: "0px 4px 4px #00000040"
     },
     theme: {
-      primaryColor: "#6366f1",
-      secondaryColor: "#f3f4f6",
+      primaryColor: "#E39A97",
+      secondaryColor: "#B85340",
       fontFamily: "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif"
+    },
+    chatWindowStyle: {
+      backgroundImage: "linear-gradient(to bottom, #823b42, #823b42, #823b42, #823b42, #b14956, #b14956, #b14956, #B85340)"
+    },
+    headerStyle: {
+      backgroundImage: "linear-gradient(to bottom, #723053, #723053, #723053, #723053, #723053, #823b42)",
+      color: "#FFFFFF",
+      borderBottom: "none"
+    },
+    chatInputContainerStyle: {
+      backgroundColor: "#B85340",
+      borderTopColor: "#B85340",
+      backdropFilter: "blur(8px)"
+    },
+    chatInputAreaStyle: {
+      minHeight: 25,
+      padding: "8px 15px",
+      backgroundColor: "#EEEEEE",
+      color: "#333333",
+      fontSize: "14px",
+      outlineColor: "transparent",
+      borderRadius: "20px"
+    },
+    sendButtonStyle: {
+      backgroundColor: "#B85340",
+      border: "none",
+      boxShadow: "none",
+      color: "#EEEEEE"
+    },
+    sendButtonHoveredStyle: {
+      backgroundColor: "#E39A97"
+    },
+    chatHistoryButtonStyle: {
+      color: "#E39A97",
+      backgroundColor: "#FFFFFF",
+      border: "1px solid #DAEDF2"
+    },
+    chatHistoryButtonHoveredStyle: {
+      color: "#FFFFFF",
+      backgroundColor: "#E39A97"
     }
   };
 
