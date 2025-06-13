@@ -22,6 +22,29 @@ function App() {
       message: "Hello! Welcome to H.BNS LLC! 🎨 How can I assist you today?",
       options: ["Services & Pricing", "Support & Contact", "Policies & Legal", "Merchandise", "Get a Quote"],
       path: (params) => {
+        const input = params.userInput.toLowerCase();
+        
+        // Handle greetings and common phrases
+        if (input.includes("hello") || input.includes("hi") || input.includes("hey") || input.includes("good")) {
+          return "start";
+        }
+        if (input.includes("help") || input.includes("support")) {
+          return "support";
+        }
+        if (input.includes("price") || input.includes("cost") || input.includes("service")) {
+          return "services";
+        }
+        if (input.includes("quote")) {
+          return "quote";
+        }
+        if (input.includes("policy") || input.includes("refund") || input.includes("return")) {
+          return "policies";
+        }
+        if (input.includes("merch") || input.includes("merchandise")) {
+          return "merch";
+        }
+        
+        // Handle exact option matches
         switch (params.userInput) {
           case "Services & Pricing": return "services";
           case "Support & Contact": return "support";
@@ -192,9 +215,31 @@ function App() {
       }
     },
     clarify: {
-      message: "I'm sorry, I didn't quite understand that. Could you please choose from the available options or rephrase your question? 🤔",
+      message: "I'm sorry, I didn't quite understand that. Could you please choose from the available options or try asking about:\n\n• Services and pricing\n• Support and contact info\n• Policies and legal info\n• Merchandise\n• Getting a quote\n\nOr feel free to type your question! 🤔",
       options: ["Services & Pricing", "Support & Contact", "Policies & Legal", "Merchandise", "Get a Quote"],
       path: (params) => {
+        const input = params.userInput.toLowerCase();
+        
+        // Handle common phrases in clarify as well
+        if (input.includes("hello") || input.includes("hi") || input.includes("hey") || input.includes("good")) {
+          return "start";
+        }
+        if (input.includes("help") || input.includes("support")) {
+          return "support";
+        }
+        if (input.includes("price") || input.includes("cost") || input.includes("service")) {
+          return "services";
+        }
+        if (input.includes("quote")) {
+          return "quote";
+        }
+        if (input.includes("policy") || input.includes("refund") || input.includes("return")) {
+          return "policies";
+        }
+        if (input.includes("merch") || input.includes("merchandise")) {
+          return "merch";
+        }
+        
         switch (params.userInput) {
           case "Services & Pricing": return "services";
           case "Support & Contact": return "support";
@@ -211,7 +256,8 @@ function App() {
     general: {
       primaryColor: "#6366f1",
       secondaryColor: "#f3f4f6",
-      fontFamily: "Arial, sans-serif"
+      fontFamily: "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
+      fontSize: 14
     },
     chatHistory: {
       storageKey: "hbns_chat_history"
@@ -232,6 +278,15 @@ function App() {
       animate: true,
       showAvatar: true,
       avatar: "🎨"
+    },
+    chatInput: {
+      enabledPlaceholderText: "Type your message...",
+      showCharacterCount: false
+    },
+    theme: {
+      primaryColor: "#6366f1",
+      secondaryColor: "#f3f4f6",
+      fontFamily: "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif"
     }
   };
 

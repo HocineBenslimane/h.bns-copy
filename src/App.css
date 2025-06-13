@@ -118,3 +118,29 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Chatbot styling fixes */
+.rcb-chat-bot * {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+.rcb-chat-bot {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+}
+
+.rcb-bot-bubble-content,
+.rcb-user-bubble-content {
+  font-size: 14px !important;
+  line-height: 1.4 !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+}
+
+.rcb-chat-input-textarea {
+  font-size: 14px !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+}
+
