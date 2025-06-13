@@ -207,7 +207,7 @@ const Hero = () => {
             <div className="group bg-gradient-to-br from-indigo-50 to-indigo-100 p-8 rounded-2xl hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 border border-indigo-200/50">
               <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">💻</div>
               <h3 className="text-xl font-semibold text-gray-900 mb-3">Digital Art</h3>
-              <p className="text-gray-600 mb-4">Modern digital illustrations and graphics for web and print</p>
+              <p className="text-gray-600 text-sm">Modern digital illustrations and graphics for web and print</p>
               <div className="flex items-center justify-between">
                 <div className="text-indigo-600 font-medium group-hover:text-indigo-700">Starting at $149</div>
                 <ArrowRight className="h-4 w-4 text-indigo-600 group-hover:translate-x-1 transition-transform" />
@@ -221,7 +221,7 @@ const Hero = () => {
       <section className="bg-gradient-to-r from-primary via-purple-600 to-indigo-600 text-white py-20 relative overflow-hidden">
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-0 left-0 w-full h-full bg-[url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23ffffff" fill-opacity="0.1"%3E%3Ccircle cx="30" cy="30" r="2"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')]"></div>
+          <div className="absolute top-0 left-0 w-full h-full bg-[url('data:image/svg+xml,%3Csvg width=\"60\" height=\"60\" viewBox=\"0 0 60 60\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Cg fill=\"none\" fill-rule=\"evenodd\"%3E%3Cg fill=\"%23ffffff\" fill-opacity=\"0.1\"%3E%3Ccircle cx=\"30\" cy=\"30\" r=\"2\"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')]"></div>
         </div>
         
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative">
