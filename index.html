@@ -24,26 +24,22 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
+
+    <form name="quote-request" netlify hidden>
+      <input type="text" name="name" />
+      <input type="email" name="email" />
+      <input type="tel" name="phone" />
+      <input type="text" name="projectType" />
+      <input type="text" name="budget" />
+      <textarea name="description"></textarea>
+      <input type="text" name="timeline" />
+    </form>
+
+    <form name="support-contact" netlify hidden>
+      <input type="text" name="name" />
+      <input type="email" name="email" />
+      <input type="text" name="subject" />
+      <textarea name="message"></textarea>
+    </form>
   </body>
 </html>
-
-  <form name="quote-request" netlify hidden>
-    <input type="text" name="name" />
-    <input type="email" name="email" />
-    <input type="tel" name="phone" />
-    <input type="text" name="projectType" />
-    <input type="text" name="budget" />
-    <textarea name="description"></textarea>
-    <input type="text" name="timeline" />
-  </form>
-
-  <form name="support-contact" netlify hidden>
-    <input type="text" name="name" />
-    <input type="email" name="email" />
-    <input type="text" name="subject" />
-    <textarea name="message"></textarea>
-  </form>
-</body>
-
-
-
