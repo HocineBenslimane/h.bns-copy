@@ -140,41 +140,35 @@ const Footer = () => {
               </li>
             </ul>
           </div>
-        </div>
 
-        {/* Newsletter & Social Section */}
-        <div className="mt-8 pt-6 border-t border-gray-800">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-center">
-            {/* Newsletter */}
-            <div className="bg-gray-800 p-4 rounded-lg border border-gray-700">
-              <h3 className="text-lg font-semibold mb-2">Stay Updated</h3>
-              <p className="text-gray-400 text-sm mb-3">Get updates on new products and exclusive offers</p>
-              <form className="flex flex-col sm:flex-row gap-2">
-                <Input 
-                  type="email" 
-                  placeholder="Enter your email address" 
-                  className="flex-1 bg-gray-700 border-gray-600 text-white placeholder-gray-400 focus:border-primary focus:ring-primary/20"
-                />
-                <Button 
-                  type="submit" 
-                  className="bg-primary hover:bg-primary/90 text-white px-4"
-                >
-                  <Send className="h-4 w-4 mr-2" />
-                  Subscribe
-                </Button>
-              </form>
-            </div>
+          {/* Newsletter & Social */}
+          <div className="space-y-3">
+            <h3 className="text-lg font-semibold">Stay Connected</h3>
+            
+            {/* Simple Newsletter Form */}
+            <form className="space-y-2">
+              <Input 
+                type="email" 
+                placeholder="Enter your email address" 
+                className="bg-gray-800 border-gray-700 text-white placeholder-gray-400 focus:border-primary focus:ring-primary/20 text-sm"
+              />
+              <Button 
+                type="submit" 
+                className="w-full bg-primary hover:bg-primary/90 text-white text-sm"
+              >
+                Subscribe
+              </Button>
+            </form>
 
             {/* Social Media */}
-            <div className="text-center lg:text-right">
-              <h3 className="text-lg font-semibold mb-3">Follow Us</h3>
+            <div className="pt-2">
               <a 
                 href="https://www.instagram.com/hbns_llc" 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="inline-flex items-center space-x-3 text-gray-300 hover:text-white transition-colors bg-gray-800 px-4 py-2.5 rounded-lg border border-gray-700 hover:border-gray-600"
+                className="inline-flex items-center space-x-2 text-gray-300 hover:text-white transition-colors text-sm"
               >
-                <Instagram className="h-5 w-5" />
+                <Instagram className="h-4 w-4" />
                 <span>@hbns_llc</span>
               </a>
             </div>
