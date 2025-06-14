@@ -80,22 +80,6 @@ const Hero = () => {
                   </a>
                 </Button>
               </div>
-
-              {/* Quick Stats */}
-              <div className="grid grid-cols-3 gap-4 pt-4 border-t border-gray-200">
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-primary">24hrs</div>
-                  <div className="text-sm text-gray-600">Response Time</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-primary">Free</div>
-                  <div className="text-sm text-gray-600">Consultation</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-primary">3</div>
-                  <div className="text-sm text-gray-600">Free Revisions</div>
-                </div>
-              </div>
             </div>
 
             {/* Enhanced Visual Hook - Features Grid */}
