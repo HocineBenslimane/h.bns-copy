@@ -26,53 +26,20 @@ import {
   Heart,
   TrendingUp,
   Crown,
-  ArrowRight,
-  Play,
-  Wand2,
-  Paintbrush,
-  MousePointer,
-  Eye,
-  Download,
-  Share2,
-  Lightbulb,
-  Target,
-  Infinity,
-  Cpu,
-  Brush,
-  Settings,
-  Grid,
-  Move,
-  RotateCw,
-  Square,
-  Circle,
-  Triangle,
-  Minus,
-  Plus,
-  Undo,
-  Redo,
-  Save,
-  FileText,
-  Folder,
-  Search,
-  Filter,
-  ChevronDown,
-  MoreHorizontal
+  ArrowRight
 } from 'lucide-react'
 
 const CustomDesigner = () => {
   const [email, setEmail] = useState('')
   const [isSubscribed, setIsSubscribed] = useState(false)
-  const [progress, setProgress] = useState(87)
-  const [subscriberCount, setSubscriberCount] = useState(2847)
-  const [activeTab, setActiveTab] = useState('templates')
-  const [selectedTemplate, setSelectedTemplate] = useState(0)
-  const [isGenerating, setIsGenerating] = useState(false)
+  const [progress, setProgress] = useState(75)
+  const [subscriberCount, setSubscriberCount] = useState(1247)
 
   // Animated counter effect
   useEffect(() => {
     const interval = setInterval(() => {
-      setSubscriberCount(prev => prev + Math.floor(Math.random() * 5))
-    }, 3000)
+      setSubscriberCount(prev => prev + Math.floor(Math.random() * 3))
+    }, 5000)
     return () => clearInterval(interval)
   }, [])
 
@@ -83,14 +50,6 @@ const CustomDesigner = () => {
       setSubscriberCount(prev => prev + 1)
       setTimeout(() => setIsSubscribed(false), 5000)
     }
-  }
-
-  const handleGenerate = () => {
-    setIsGenerating(true)
-    setTimeout(() => {
-      setIsGenerating(false)
-      setSelectedTemplate((prev) => (prev + 1) % 3)
-    }, 2000)
   }
 
   const products = [
@@ -134,30 +93,6 @@ const CustomDesigner = () => {
     { icon: Crown, title: 'Premium Quality', description: 'Professional-grade output every time' },
     { icon: Gift, title: 'Early Bird Perks', description: '50% off first order + exclusive templates' },
     { icon: Heart, title: 'User-Friendly', description: 'No design experience required' }
-  ]
-
-  const mockTemplates = [
-    {
-      id: 1,
-      name: 'Modern Logo',
-      category: 'Logo',
-      preview: '🎯',
-      colors: ['#E39A97', '#B85340', '#723053']
-    },
-    {
-      id: 2,
-      name: 'Business Card',
-      category: 'Business',
-      preview: '💼',
-      colors: ['#E39A97', '#B85340', '#723053']
-    },
-    {
-      id: 3,
-      name: 'Social Post',
-      category: 'Social',
-      preview: '📱',
-      colors: ['#E39A97', '#B85340', '#723053']
-    }
   ]
 
   return (
@@ -231,22 +166,20 @@ const CustomDesigner = () => {
         <div className="mb-20">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">Sneak Peek: Design Studio</h2>
-            <p className="text-xl text-gray-600">Experience the future of custom product design with H.BNS</p>
+            <p className="text-xl text-gray-600">Experience the future of custom product design</p>
           </div>
           
           <Card className="max-w-6xl mx-auto shadow-2xl border-0 bg-gradient-to-br from-white to-gray-50/50 overflow-hidden">
             <CardHeader className="bg-gradient-to-r from-primary/10 to-accent/10 border-b">
               <div className="flex items-center justify-between">
-                <div className="flex items-center space-x-3">
-                  <div className="p-2 bg-primary/20 rounded-lg">
-                    <Palette className="h-6 w-6 text-primary" />
-                  </div>
-                  <div>
-                    <CardTitle className="text-2xl text-gray-900">H.BNS Design Studio</CardTitle>
-                    <CardDescription className="text-base text-gray-600">
-                      Professional design tools at your fingertips
-                    </CardDescription>
-                  </div>
+                <div>
+                  <CardTitle className="text-2xl flex items-center">
+                    <Sparkles className="h-6 w-6 mr-2 text-primary" />
+                    H.BNS Design Studio
+                  </CardTitle>
+                  <CardDescription className="text-base">
+                    Professional design tools at your fingertips
+                  </CardDescription>
                 </div>
                 <Badge className="bg-green-100 text-green-800 border-green-200">
                   <div className="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></div>
@@ -259,28 +192,28 @@ const CustomDesigner = () => {
                 {/* Enhanced Design Canvas */}
                 <div className="lg:col-span-2 space-y-4">
                   <div className="flex items-center justify-between">
-                    <h3 className="text-lg font-semibold text-gray-900">Design Canvas</h3>
+                    <h3 className="text-lg font-semibold">Design Canvas</h3>
                     <div className="flex space-x-2">
-                      <Badge variant="outline" className="text-xs border-primary/30 text-primary">
+                      <Badge variant="outline" className="text-xs">
                         <Zap className="h-3 w-3 mr-1" />
                         Real-time
                       </Badge>
-                      <Badge variant="outline" className="text-xs border-primary/30 text-primary">
+                      <Badge variant="outline" className="text-xs">
                         <Star className="h-3 w-3 mr-1" />
                         HD Quality
                       </Badge>
                     </div>
                   </div>
-                  <div className="aspect-[4/3] bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl border-2 border-dashed border-primary/30 flex items-center justify-center relative overflow-hidden group hover:border-primary/50 transition-all duration-300">
+                  <div className="aspect-[4/3] bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl border-2 border-dashed border-gray-300 flex items-center justify-center relative overflow-hidden group hover:border-primary/50 transition-all duration-300">
                     <div className="text-center space-y-4 group-hover:scale-105 transition-transform duration-300">
                       <div className="relative">
-                        <Shirt className="h-20 w-20 mx-auto text-primary/60 group-hover:text-primary transition-colors duration-300" />
+                        <Shirt className="h-20 w-20 mx-auto text-gray-400 group-hover:text-primary transition-colors duration-300" />
                         <div className="absolute -top-2 -right-2 w-6 h-6 bg-primary rounded-full flex items-center justify-center">
                           <Sparkles className="h-3 w-3 text-white" />
                         </div>
                       </div>
                       <div>
-                        <p className="text-gray-700 font-medium">Your masterpiece appears here</p>
+                        <p className="text-gray-600 font-medium">Your masterpiece appears here</p>
                         <p className="text-sm text-gray-500">Drag, drop, and design with ease</p>
                       </div>
                     </div>
@@ -290,7 +223,7 @@ const CustomDesigner = () => {
 
                 {/* Enhanced Tools Panel */}
                 <div className="space-y-4">
-                  <h3 className="text-lg font-semibold flex items-center text-gray-900">
+                  <h3 className="text-lg font-semibold flex items-center">
                     <Palette className="h-5 w-5 mr-2 text-primary" />
                     Design Tools
                   </h3>
@@ -301,7 +234,7 @@ const CustomDesigner = () => {
                       { name: 'Color Magic', icon: Palette, status: 'popular', color: 'purple' },
                       { name: 'Layer Studio', icon: Layers, status: 'pro', color: 'orange' }
                     ].map((tool, index) => (
-                      <div key={index} className="flex items-center justify-between p-4 bg-white rounded-lg border border-gray-200 hover:border-primary/30 hover:shadow-md transition-all duration-200 group cursor-pointer">
+                      <div key={index} className="flex items-center justify-between p-4 bg-white rounded-lg border hover:border-primary/30 hover:shadow-md transition-all duration-200 group cursor-pointer">
                         <div className="flex items-center space-x-3">
                           <div className="p-2 bg-primary/10 rounded-lg group-hover:bg-primary/20 transition-colors duration-200">
                             <tool.icon className="h-5 w-5 text-primary" />
@@ -322,196 +255,6 @@ const CustomDesigner = () => {
                       </div>
                     ))}
                   </div>
-                </div>
-              </div>
-
-              {/* Interactive Demo Section */}
-              <div className="mt-8 pt-8 border-t border-gray-200">
-                <div className="text-center mb-6">
-                  <h4 className="text-lg font-semibold text-gray-900 mb-2">Try the Interface</h4>
-                  <p className="text-gray-600">Click the tabs below to explore different features</p>
-                </div>
-
-                {/* Tab Navigation */}
-                <div className="flex justify-center mb-6">
-                  <div className="flex bg-gray-100 rounded-lg p-1">
-                    {[
-                      { id: 'templates', label: 'Templates', icon: Grid },
-                      { id: 'ai', label: 'AI Generate', icon: Wand2 },
-                      { id: 'tools', label: 'Tools', icon: Settings }
-                    ].map((tab) => (
-                      <button
-                        key={tab.id}
-                        onClick={() => setActiveTab(tab.id)}
-                        className={`flex items-center space-x-2 px-4 py-2 rounded-md transition-all ${
-                          activeTab === tab.id 
-                            ? 'bg-white text-primary shadow-sm border border-primary/20' 
-                            : 'text-gray-600 hover:text-gray-900'
-                        }`}
-                      >
-                        <tab.icon className="h-4 w-4" />
-                        <span className="text-sm font-medium">{tab.label}</span>
-                      </button>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Tab Content */}
-                <div className="bg-gray-50 rounded-xl p-6 min-h-[200px]">
-                  {activeTab === 'templates' && (
-                    <div>
-                      <h5 className="font-semibold text-gray-900 mb-4">Choose Your Template</h5>
-                      <div className="grid grid-cols-3 gap-4">
-                        {mockTemplates.map((template, index) => (
-                          <div
-                            key={template.id}
-                            onClick={() => setSelectedTemplate(index)}
-                            className={`aspect-square bg-white rounded-lg border-2 cursor-pointer transition-all hover:scale-105 ${
-                              selectedTemplate === index ? 'border-primary ring-2 ring-primary/20' : 'border-gray-200 hover:border-primary/50'
-                            }`}
-                          >
-                            <div className="p-4 h-full flex flex-col">
-                              <div className="flex-1 flex items-center justify-center text-3xl">
-                                {template.preview}
-                              </div>
-                              <div className="mt-2">
-                                <h6 className="text-gray-900 text-sm font-medium">{template.name}</h6>
-                                <p className="text-gray-500 text-xs">{template.category}</p>
-                                <div className="flex space-x-1 mt-2">
-                                  {template.colors.map((color, i) => (
-                                    <div
-                                      key={i}
-                                      className="w-3 h-3 rounded-full border border-gray-200"
-                                      style={{ backgroundColor: color }}
-                                    ></div>
-                                  ))}
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-
-                  {activeTab === 'ai' && (
-                    <div>
-                      <h5 className="font-semibold text-gray-900 mb-4">AI Design Generator</h5>
-                      <div className="space-y-4">
-                        <div>
-                          <Label htmlFor="ai-prompt" className="text-gray-700">Describe your design</Label>
-                          <Input
-                            id="ai-prompt"
-                            placeholder="e.g., Modern minimalist logo for a coffee shop with warm colors"
-                            className="mt-2 border-gray-300 focus:border-primary focus:ring-primary/20"
-                          />
-                        </div>
-                        <div className="flex items-center space-x-3">
-                          <Button
-                            onClick={handleGenerate}
-                            disabled={isGenerating}
-                            className="bg-primary hover:bg-primary/90 text-white"
-                          >
-                            {isGenerating ? (
-                              <>
-                                <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin mr-2"></div>
-                                Generating...
-                              </>
-                            ) : (
-                              <>
-                                <Wand2 className="h-4 w-4 mr-2" />
-                                Generate Design
-                              </>
-                            )}
-                          </Button>
-                          <Badge className="bg-primary/10 text-primary border-primary/20">
-                            Powered by AI
-                          </Badge>
-                        </div>
-                        
-                        {isGenerating && (
-                          <div className="bg-white rounded-lg p-4 border border-gray-200">
-                            <div className="flex items-center space-x-3 mb-3">
-                              <div className="w-5 h-5 border-2 border-primary/30 border-t-primary rounded-full animate-spin"></div>
-                              <span className="text-gray-700 font-medium">AI is creating your design...</span>
-                            </div>
-                            <div className="space-y-2 text-sm text-gray-600">
-                              <div className="flex items-center space-x-2">
-                                <CheckCircle className="h-4 w-4 text-green-500" />
-                                <span>Analyzing your prompt</span>
-                              </div>
-                              <div className="flex items-center space-x-2">
-                                <CheckCircle className="h-4 w-4 text-green-500" />
-                                <span>Generating concepts</span>
-                              </div>
-                              <div className="flex items-center space-x-2">
-                                <div className="w-4 h-4 border-2 border-primary/30 border-t-primary rounded-full animate-spin"></div>
-                                <span>Applying H.BNS styling</span>
-                              </div>
-                            </div>
-                          </div>
-                        )}
-                      </div>
-                    </div>
-                  )}
-
-                  {activeTab === 'tools' && (
-                    <div>
-                      <h5 className="font-semibold text-gray-900 mb-4">Professional Tools</h5>
-                      <div className="grid grid-cols-2 gap-4">
-                        <div className="bg-white rounded-lg p-4 border border-gray-200">
-                          <h6 className="font-medium text-gray-900 mb-2">Color Palette</h6>
-                          <div className="flex space-x-2">
-                            {['#E39A97', '#B85340', '#723053', '#8B5A3C'].map((color, i) => (
-                              <div
-                                key={i}
-                                className="w-8 h-8 rounded-lg border-2 border-gray-200 cursor-pointer hover:scale-110 transition-transform"
-                                style={{ backgroundColor: color }}
-                              ></div>
-                            ))}
-                          </div>
-                        </div>
-                        <div className="bg-white rounded-lg p-4 border border-gray-200">
-                          <h6 className="font-medium text-gray-900 mb-2">Typography</h6>
-                          <select className="w-full border border-gray-300 rounded-md p-2 text-sm focus:border-primary focus:ring-primary/20">
-                            <option>Inter (Recommended)</option>
-                            <option>Roboto</option>
-                            <option>Poppins</option>
-                          </select>
-                        </div>
-                        <div className="bg-white rounded-lg p-4 border border-gray-200">
-                          <h6 className="font-medium text-gray-900 mb-2">Export Options</h6>
-                          <div className="space-y-1">
-                            <div className="flex items-center space-x-2 text-sm text-gray-600">
-                              <CheckCircle className="h-4 w-4 text-green-500" />
-                              <span>PNG (High Quality)</span>
-                            </div>
-                            <div className="flex items-center space-x-2 text-sm text-gray-600">
-                              <CheckCircle className="h-4 w-4 text-green-500" />
-                              <span>SVG (Vector)</span>
-                            </div>
-                            <div className="flex items-center space-x-2 text-sm text-gray-600">
-                              <CheckCircle className="h-4 w-4 text-green-500" />
-                              <span>PDF (Print Ready)</span>
-                            </div>
-                          </div>
-                        </div>
-                        <div className="bg-white rounded-lg p-4 border border-gray-200">
-                          <h6 className="font-medium text-gray-900 mb-2">Quick Actions</h6>
-                          <div className="space-y-2">
-                            <Button variant="outline" size="sm" className="w-full justify-start text-sm">
-                              <Download className="h-4 w-4 mr-2" />
-                              Export Design
-                            </Button>
-                            <Button variant="outline" size="sm" className="w-full justify-start text-sm">
-                              <Share2 className="h-4 w-4 mr-2" />
-                              Share Link
-                            </Button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  )}
                 </div>
               </div>
             </CardContent>
@@ -676,7 +419,7 @@ const CustomDesigner = () => {
                 amazing custom products for you manually.
               </p>
               <Button size="lg" className="bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-white px-8 py-4" asChild>
-                <a href="/get-a-quote">
+                <a href="/#quote">
                   <Rocket className="mr-2 h-5 w-5" />
                   Request Custom Design Now
                   <ArrowRight className="ml-2 h-5 w-5" />
