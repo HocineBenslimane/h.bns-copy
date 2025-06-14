@@ -39,7 +39,25 @@ import {
   Infinity,
   Cpu,
   Brush,
-  Palette as PaletteIcon
+  Palette as PaletteIcon,
+  Settings,
+  Grid,
+  Move,
+  RotateCw,
+  Square,
+  Circle,
+  Triangle,
+  Minus,
+  Plus,
+  Undo,
+  Redo,
+  Save,
+  FileText,
+  Folder,
+  Search,
+  Filter,
+  ChevronDown,
+  MoreHorizontal
 } from 'lucide-react'
 
 const CustomDesigner = () => {
@@ -49,6 +67,9 @@ const CustomDesigner = () => {
   const [subscriberCount, setSubscriberCount] = useState(2847)
   const [currentFeature, setCurrentFeature] = useState(0)
   const [isVisible, setIsVisible] = useState(false)
+  const [activeTab, setActiveTab] = useState('templates')
+  const [selectedTemplate, setSelectedTemplate] = useState(0)
+  const [isGenerating, setIsGenerating] = useState(false)
 
   // Animated counter effect
   useEffect(() => {
@@ -78,6 +99,14 @@ const CustomDesigner = () => {
       setSubscriberCount(prev => prev + 1)
       setTimeout(() => setIsSubscribed(false), 5000)
     }
+  }
+
+  const handleGenerate = () => {
+    setIsGenerating(true)
+    setTimeout(() => {
+      setIsGenerating(false)
+      setSelectedTemplate((prev) => (prev + 1) % 3)
+    }, 2000)
   }
 
   const features = [
@@ -124,6 +153,30 @@ const CustomDesigner = () => {
     { name: 'Sarah M.', text: 'This will revolutionize my design workflow!', rating: 5 },
     { name: 'Mike R.', text: 'Can\'t wait to try the AI features!', rating: 5 },
     { name: 'Lisa K.', text: 'Finally, professional design made simple!', rating: 5 }
+  ]
+
+  const mockTemplates = [
+    {
+      id: 1,
+      name: 'Modern Logo',
+      category: 'Logo',
+      preview: '🎯',
+      colors: ['#6366f1', '#8b5cf6', '#06b6d4']
+    },
+    {
+      id: 2,
+      name: 'Business Card',
+      category: 'Business',
+      preview: '💼',
+      colors: ['#ef4444', '#f97316', '#eab308']
+    },
+    {
+      id: 3,
+      name: 'Social Post',
+      category: 'Social',
+      preview: '📱',
+      colors: ['#10b981', '#059669', '#047857']
+    }
   ]
 
   return (
@@ -210,6 +263,382 @@ const CustomDesigner = () => {
                 <Play className="mr-3 h-6 w-6" />
                 Watch Demo
               </Button>
+            </div>
+          </div>
+        </section>
+
+        {/* Interactive UI Preview Section */}
+        <section className="py-20 px-4 sm:px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-16">
+              <h2 className="text-5xl font-bold text-white mb-6">
+                Sneak Peek: <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400">The Interface</span>
+              </h2>
+              <p className="text-xl text-white/70 max-w-3xl mx-auto">
+                Get a real preview of how our revolutionary design studio will look and feel
+              </p>
+            </div>
+
+            {/* Main UI Preview */}
+            <div className="bg-white/10 backdrop-blur-sm rounded-3xl border border-white/20 overflow-hidden shadow-2xl">
+              {/* Browser Header */}
+              <div className="bg-gray-800/50 px-6 py-4 border-b border-white/10">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center space-x-3">
+                    <div className="flex space-x-2">
+                      <div className="w-3 h-3 bg-red-500 rounded-full"></div>
+                      <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                      <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+                    </div>
+                    <div className="text-white/70 text-sm font-mono">
+                      studio.h-bns.com
+                    </div>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <Badge className="bg-green-500/20 text-green-300 border-green-400/30">
+                      <div className="w-2 h-2 bg-green-400 rounded-full mr-2 animate-pulse"></div>
+                      Live Preview
+                    </Badge>
+                  </div>
+                </div>
+              </div>
+
+              {/* Main Interface */}
+              <div className="grid lg:grid-cols-12 h-[600px]">
+                {/* Left Sidebar */}
+                <div className="lg:col-span-3 bg-gray-900/50 border-r border-white/10 p-4">
+                  <div className="space-y-4">
+                    {/* Logo */}
+                    <div className="flex items-center space-x-2 mb-6">
+                      <div className="w-8 h-8 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg flex items-center justify-center">
+                        <Sparkles className="h-4 w-4 text-white" />
+                      </div>
+                      <span className="text-white font-bold">H.BNS Studio</span>
+                    </div>
+
+                    {/* Navigation Tabs */}
+                    <div className="space-y-2">
+                      {[
+                        { id: 'templates', label: 'Templates', icon: Grid, count: '10K+' },
+                        { id: 'ai', label: 'AI Generate', icon: Wand2, count: 'New' },
+                        { id: 'uploads', label: 'My Uploads', icon: Upload, count: '12' },
+                        { id: 'projects', label: 'Projects', icon: Folder, count: '5' }
+                      ].map((tab) => (
+                        <button
+                          key={tab.id}
+                          onClick={() => setActiveTab(tab.id)}
+                          className={`w-full flex items-center justify-between p-3 rounded-lg transition-all ${
+                            activeTab === tab.id 
+                              ? 'bg-white/20 text-white border border-white/30' 
+                              : 'text-white/70 hover:bg-white/10 hover:text-white'
+                          }`}
+                        >
+                          <div className="flex items-center space-x-3">
+                            <tab.icon className="h-4 w-4" />
+                            <span className="text-sm font-medium">{tab.label}</span>
+                          </div>
+                          <Badge variant="outline" className="text-xs border-white/30 text-white/70">
+                            {tab.count}
+                          </Badge>
+                        </button>
+                      ))}
+                    </div>
+
+                    {/* Quick Actions */}
+                    <div className="mt-8 space-y-2">
+                      <h4 className="text-white/70 text-xs font-medium uppercase tracking-wider">Quick Actions</h4>
+                      {[
+                        { label: 'New Logo', icon: Target },
+                        { label: 'Business Card', icon: FileText },
+                        { label: 'Social Post', icon: Smartphone }
+                      ].map((action, index) => (
+                        <button
+                          key={index}
+                          className="w-full flex items-center space-x-3 p-2 text-white/70 hover:text-white hover:bg-white/10 rounded-lg transition-all text-sm"
+                        >
+                          <action.icon className="h-4 w-4" />
+                          <span>{action.label}</span>
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Main Content Area */}
+                <div className="lg:col-span-6 bg-gray-800/30 p-6">
+                  {/* Top Bar */}
+                  <div className="flex items-center justify-between mb-6">
+                    <div className="flex items-center space-x-4">
+                      <h3 className="text-white text-lg font-semibold">
+                        {activeTab === 'templates' ? 'Template Gallery' : 
+                         activeTab === 'ai' ? 'AI Generator' : 
+                         activeTab === 'uploads' ? 'My Uploads' : 'My Projects'}
+                      </h3>
+                      <Badge className="bg-blue-500/20 text-blue-300 border-blue-400/30">
+                        {activeTab === 'templates' ? '10,000+ templates' : 
+                         activeTab === 'ai' ? 'Powered by GPT-4' : 
+                         activeTab === 'uploads' ? '12 files' : '5 projects'}
+                      </Badge>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <Button variant="outline" size="sm" className="border-white/30 text-white hover:bg-white/10">
+                        <Filter className="h-4 w-4 mr-2" />
+                        Filter
+                      </Button>
+                      <Button variant="outline" size="sm" className="border-white/30 text-white hover:bg-white/10">
+                        <Search className="h-4 w-4" />
+                      </Button>
+                    </div>
+                  </div>
+
+                  {/* Content Based on Active Tab */}
+                  {activeTab === 'templates' && (
+                    <div className="grid grid-cols-3 gap-4">
+                      {mockTemplates.map((template, index) => (
+                        <div
+                          key={template.id}
+                          onClick={() => setSelectedTemplate(index)}
+                          className={`aspect-square bg-white/10 rounded-xl border cursor-pointer transition-all hover:scale-105 ${
+                            selectedTemplate === index ? 'border-purple-400 ring-2 ring-purple-400/50' : 'border-white/20 hover:border-white/40'
+                          }`}
+                        >
+                          <div className="p-4 h-full flex flex-col">
+                            <div className="flex-1 flex items-center justify-center text-4xl">
+                              {template.preview}
+                            </div>
+                            <div className="mt-2">
+                              <h4 className="text-white text-sm font-medium">{template.name}</h4>
+                              <p className="text-white/60 text-xs">{template.category}</p>
+                              <div className="flex space-x-1 mt-2">
+                                {template.colors.map((color, i) => (
+                                  <div
+                                    key={i}
+                                    className="w-3 h-3 rounded-full"
+                                    style={{ backgroundColor: color }}
+                                  ></div>
+                                ))}
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+
+                  {activeTab === 'ai' && (
+                    <div className="space-y-6">
+                      <div className="bg-white/10 rounded-xl p-6 border border-white/20">
+                        <h4 className="text-white font-medium mb-4">Describe your design</h4>
+                        <div className="space-y-4">
+                          <Input
+                            placeholder="e.g., Modern minimalist logo for a coffee shop with warm colors"
+                            className="bg-white/10 border-white/30 text-white placeholder-white/50"
+                          />
+                          <div className="flex items-center space-x-2">
+                            <Button
+                              onClick={handleGenerate}
+                              disabled={isGenerating}
+                              className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700"
+                            >
+                              {isGenerating ? (
+                                <>
+                                  <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin mr-2"></div>
+                                  Generating...
+                                </>
+                              ) : (
+                                <>
+                                  <Wand2 className="h-4 w-4 mr-2" />
+                                  Generate Design
+                                </>
+                              )}
+                            </Button>
+                            <Button variant="outline" className="border-white/30 text-white hover:bg-white/10">
+                              <Settings className="h-4 w-4 mr-2" />
+                              Advanced
+                            </Button>
+                          </div>
+                        </div>
+                      </div>
+                      
+                      {isGenerating && (
+                        <div className="bg-white/10 rounded-xl p-6 border border-white/20">
+                          <div className="flex items-center space-x-3 mb-4">
+                            <div className="w-6 h-6 border-2 border-purple-400/30 border-t-purple-400 rounded-full animate-spin"></div>
+                            <span className="text-white">AI is creating your design...</span>
+                          </div>
+                          <div className="space-y-2 text-sm text-white/70">
+                            <div>✓ Analyzing your prompt</div>
+                            <div>✓ Generating concepts</div>
+                            <div className="flex items-center space-x-2">
+                              <div className="w-2 h-2 bg-purple-400 rounded-full animate-pulse"></div>
+                              <span>Applying styles and colors</span>
+                            </div>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  )}
+                </div>
+
+                {/* Right Sidebar - Properties Panel */}
+                <div className="lg:col-span-3 bg-gray-900/50 border-l border-white/10 p-4">
+                  <div className="space-y-6">
+                    <div>
+                      <h4 className="text-white font-medium mb-4 flex items-center">
+                        <Settings className="h-4 w-4 mr-2" />
+                        Properties
+                      </h4>
+                      
+                      {/* Design Tools */}
+                      <div className="space-y-4">
+                        <div>
+                          <label className="text-white/70 text-sm">Colors</label>
+                          <div className="flex space-x-2 mt-2">
+                            {['#6366f1', '#8b5cf6', '#06b6d4', '#10b981'].map((color, i) => (
+                              <div
+                                key={i}
+                                className="w-8 h-8 rounded-lg border-2 border-white/30 cursor-pointer hover:scale-110 transition-transform"
+                                style={{ backgroundColor: color }}
+                              ></div>
+                            ))}
+                            <div className="w-8 h-8 rounded-lg border-2 border-dashed border-white/30 flex items-center justify-center cursor-pointer hover:bg-white/10">
+                              <Plus className="h-4 w-4 text-white/70" />
+                            </div>
+                          </div>
+                        </div>
+
+                        <div>
+                          <label className="text-white/70 text-sm">Typography</label>
+                          <select className="w-full mt-2 bg-white/10 border border-white/30 rounded-lg p-2 text-white text-sm">
+                            <option>Inter</option>
+                            <option>Roboto</option>
+                            <option>Poppins</option>
+                          </select>
+                        </div>
+
+                        <div>
+                          <label className="text-white/70 text-sm">Size</label>
+                          <div className="flex space-x-2 mt-2">
+                            <Input
+                              placeholder="Width"
+                              className="bg-white/10 border-white/30 text-white text-sm"
+                              defaultValue="1200"
+                            />
+                            <Input
+                              placeholder="Height"
+                              className="bg-white/10 border-white/30 text-white text-sm"
+                              defaultValue="800"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Quick Actions */}
+                    <div>
+                      <h4 className="text-white font-medium mb-4">Actions</h4>
+                      <div className="space-y-2">
+                        {[
+                          { label: 'Export', icon: Download },
+                          { label: 'Share', icon: Share2 },
+                          { label: 'Save', icon: Save },
+                          { label: 'Duplicate', icon: Square }
+                        ].map((action, index) => (
+                          <Button
+                            key={index}
+                            variant="outline"
+                            size="sm"
+                            className="w-full justify-start border-white/30 text-white hover:bg-white/10"
+                          >
+                            <action.icon className="h-4 w-4 mr-2" />
+                            {action.label}
+                          </Button>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Layer Panel */}
+                    <div>
+                      <h4 className="text-white font-medium mb-4">Layers</h4>
+                      <div className="space-y-2">
+                        {['Background', 'Logo Shape', 'Text Layer', 'Effects'].map((layer, index) => (
+                          <div
+                            key={index}
+                            className="flex items-center justify-between p-2 bg-white/10 rounded-lg border border-white/20"
+                          >
+                            <div className="flex items-center space-x-2">
+                              <Eye className="h-4 w-4 text-white/70" />
+                              <span className="text-white text-sm">{layer}</span>
+                            </div>
+                            <MoreHorizontal className="h-4 w-4 text-white/70" />
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Bottom Toolbar */}
+              <div className="bg-gray-800/50 border-t border-white/10 p-4">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center space-x-4">
+                    <div className="flex items-center space-x-2">
+                      <Button variant="ghost" size="sm" className="text-white hover:bg-white/10">
+                        <Undo className="h-4 w-4" />
+                      </Button>
+                      <Button variant="ghost" size="sm" className="text-white hover:bg-white/10">
+                        <Redo className="h-4 w-4" />
+                      </Button>
+                    </div>
+                    <div className="text-white/70 text-sm">
+                      Zoom: 100%
+                    </div>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <Button variant="outline" size="sm" className="border-white/30 text-white hover:bg-white/10">
+                      Preview
+                    </Button>
+                    <Button className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700">
+                      <Download className="h-4 w-4 mr-2" />
+                      Export
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Feature Callouts */}
+            <div className="grid md:grid-cols-3 gap-6 mt-12">
+              <Card className="bg-white/10 backdrop-blur-sm border-white/20">
+                <CardContent className="p-6 text-center">
+                  <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl flex items-center justify-center mx-auto mb-4">
+                    <Zap className="h-6 w-6 text-white" />
+                  </div>
+                  <h3 className="text-white font-semibold mb-2">Real-time Collaboration</h3>
+                  <p className="text-white/70 text-sm">Work with your team in real-time, see changes instantly</p>
+                </CardContent>
+              </Card>
+              
+              <Card className="bg-white/10 backdrop-blur-sm border-white/20">
+                <CardContent className="p-6 text-center">
+                  <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-xl flex items-center justify-center mx-auto mb-4">
+                    <Cpu className="h-6 w-6 text-white" />
+                  </div>
+                  <h3 className="text-white font-semibold mb-2">AI-Powered Tools</h3>
+                  <p className="text-white/70 text-sm">Smart suggestions and automated design assistance</p>
+                </CardContent>
+              </Card>
+              
+              <Card className="bg-white/10 backdrop-blur-sm border-white/20">
+                <CardContent className="p-6 text-center">
+                  <div className="w-12 h-12 bg-gradient-to-r from-green-500 to-emerald-500 rounded-xl flex items-center justify-center mx-auto mb-4">
+                    <Target className="h-6 w-6 text-white" />
+                  </div>
+                  <h3 className="text-white font-semibold mb-2">Professional Output</h3>
+                  <p className="text-white/70 text-sm">Export in any format, ready for print or digital use</p>
+                </CardContent>
+              </Card>
             </div>
           </div>
         </section>
