@@ -11,6 +11,9 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  optimizeDeps: {
+    exclude: ['eslint.config.js']
+  },
   build: {
     rollupOptions: {
       external: ['eslint.config.js']
