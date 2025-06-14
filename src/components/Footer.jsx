@@ -6,10 +6,10 @@ import { Input } from '@/components/ui/input'
 const Footer = () => {
   return (
     <footer className="bg-gray-900 text-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
           {/* Company Info */}
-          <div className="lg:col-span-2 space-y-4">
+          <div className="lg:col-span-2 space-y-3">
             <div className="flex items-center space-x-2">
               <Palette className="h-8 w-8 text-primary" />
               <span className="text-2xl font-bold">H.BNS</span>
@@ -18,7 +18,7 @@ const Footer = () => {
               Professional custom illustration services from logos to character designs. 
               Bringing your creative vision to life with quality and precision.
             </p>
-            <div className="space-y-2 text-sm">
+            <div className="space-y-1.5 text-sm">
               <div className="flex items-center space-x-2">
                 <MapPin className="h-4 w-4 text-gray-400 flex-shrink-0" />
                 <span className="text-gray-300">30 N Gould St Ste N, Sheridan, WY 82801 USA</span>
@@ -35,9 +35,9 @@ const Footer = () => {
           </div>
 
           {/* Services */}
-          <div className="space-y-4">
+          <div className="space-y-3">
             <h3 className="text-lg font-semibold">Services</h3>
-            <ul className="space-y-2 text-sm">
+            <ul className="space-y-1.5 text-sm">
               <li>
                 <Link to="/#quote" className="text-gray-300 hover:text-white transition-colors">
                   Custom Illustrations
@@ -67,9 +67,9 @@ const Footer = () => {
           </div>
 
           {/* Quick Links */}
-          <div className="space-y-4">
+          <div className="space-y-3">
             <h3 className="text-lg font-semibold">Quick Links</h3>
-            <ul className="space-y-2 text-sm">
+            <ul className="space-y-1.5 text-sm">
               <li>
                 <Link to="/" className="text-gray-300 hover:text-white transition-colors">
                   Home
@@ -110,9 +110,9 @@ const Footer = () => {
           </div>
 
           {/* Legal & Policies */}
-          <div className="space-y-4">
+          <div className="space-y-3">
             <h3 className="text-lg font-semibold">Legal & Policies</h3>
-            <ul className="space-y-2 text-sm">
+            <ul className="space-y-1.5 text-sm">
               <li>
                 <Link to="/legal" className="text-gray-300 hover:text-white transition-colors">
                   Terms & Conditions
@@ -143,13 +143,13 @@ const Footer = () => {
         </div>
 
         {/* Newsletter & Social Section */}
-        <div className="mt-12 pt-8 border-t border-gray-800">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+        <div className="mt-8 pt-6 border-t border-gray-800">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-center">
             {/* Newsletter */}
-            <div className="bg-gray-800 p-6 rounded-lg border border-gray-700">
+            <div className="bg-gray-800 p-4 rounded-lg border border-gray-700">
               <h3 className="text-lg font-semibold mb-2">Stay Updated</h3>
-              <p className="text-gray-400 text-sm mb-4">Get updates on new products and exclusive offers</p>
-              <form className="flex flex-col sm:flex-row gap-3">
+              <p className="text-gray-400 text-sm mb-3">Get updates on new products and exclusive offers</p>
+              <form className="flex flex-col sm:flex-row gap-2">
                 <Input 
                   type="email" 
                   placeholder="Enter your email address" 
@@ -157,7 +157,7 @@ const Footer = () => {
                 />
                 <Button 
                   type="submit" 
-                  className="bg-primary hover:bg-primary/90 text-white px-6"
+                  className="bg-primary hover:bg-primary/90 text-white px-4"
                 >
                   <Send className="h-4 w-4 mr-2" />
                   Subscribe
@@ -167,12 +167,12 @@ const Footer = () => {
 
             {/* Social Media */}
             <div className="text-center lg:text-right">
-              <h3 className="text-lg font-semibold mb-4">Follow Us</h3>
+              <h3 className="text-lg font-semibold mb-3">Follow Us</h3>
               <a 
                 href="https://www.instagram.com/hbns_llc" 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="inline-flex items-center space-x-3 text-gray-300 hover:text-white transition-colors bg-gray-800 px-6 py-3 rounded-lg border border-gray-700 hover:border-gray-600"
+                className="inline-flex items-center space-x-3 text-gray-300 hover:text-white transition-colors bg-gray-800 px-4 py-2.5 rounded-lg border border-gray-700 hover:border-gray-600"
               >
                 <Instagram className="h-5 w-5" />
                 <span>@hbns_llc</span>
@@ -182,12 +182,12 @@ const Footer = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-gray-800 mt-8 pt-8">
-          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+        <div className="border-t border-gray-800 mt-6 pt-4">
+          <div className="flex flex-col md:flex-row justify-between items-center space-y-2 md:space-y-0">
             <div className="text-sm text-gray-400 text-center md:text-left">
               © 2025 H.BNS LLC. All rights reserved.
             </div>
-            <img src="/hbns-logo-footer.png" alt="H.BNS LLC Logo" className="h-16 w-auto opacity-80" />
+            <img src="/hbns-logo-footer.png" alt="H.BNS LLC Logo" className="h-12 w-auto opacity-80" />
           </div>
         </div>
       </div>
