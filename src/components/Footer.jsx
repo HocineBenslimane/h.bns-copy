@@ -145,28 +145,30 @@ const Footer = () => {
           <div className="space-y-3">
             <h3 className="text-lg font-semibold">Stay Connected</h3>
             
-            {/* Simple Newsletter Form */}
-            <form className="space-y-2">
-              <Input 
-                type="email" 
-                placeholder="Enter your email address" 
-                className="bg-gray-800 border-gray-700 text-white placeholder-gray-400 focus:border-primary focus:ring-primary/20 text-sm"
-              />
-              <Button 
-                type="submit" 
-                className="w-full bg-primary hover:bg-primary/90 text-white text-sm"
-              >
-                Subscribe
-              </Button>
-            </form>
-
-            {/* Social Media */}
-            <div className="pt-2">
+            {/* Newsletter Form and Instagram in same row */}
+            <div className="flex flex-col sm:flex-row gap-3 items-start">
+              {/* Newsletter Form */}
+              <form className="flex-1 flex gap-2">
+                <Input 
+                  type="email" 
+                  placeholder="Enter your email" 
+                  className="flex-1 bg-gray-800 border-gray-700 text-white placeholder-gray-400 focus:border-primary focus:ring-primary/20 text-sm h-9"
+                />
+                <Button 
+                  type="submit" 
+                  size="sm"
+                  className="bg-primary hover:bg-primary/90 text-white px-3"
+                >
+                  <Send className="h-4 w-4" />
+                </Button>
+              </form>
+              
+              {/* Instagram Link */}
               <a 
                 href="https://www.instagram.com/hbns_llc" 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="inline-flex items-center space-x-2 text-gray-300 hover:text-white transition-colors text-sm"
+                className="flex items-center space-x-2 text-gray-300 hover:text-white transition-colors text-sm whitespace-nowrap"
               >
                 <Instagram className="h-4 w-4" />
                 <span>@hbns_llc</span>
