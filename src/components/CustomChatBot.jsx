@@ -1,12 +1,24 @@
-import { useState, useEffect } from 'react'
-import { X, MessageCircle, Send } from 'lucide-react'
+import { useState, useEffect, useRef } from 'react'
+import { X, MessageCircle, Send, RotateCcw } from 'lucide-react'
 import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
 
 const CustomChatBot = () => {
   const [isOpen, setIsOpen] = useState(false)
   const [messages, setMessages] = useState([])
   const [currentStep, setCurrentStep] = useState('start')
   const [isTyping, setIsTyping] = useState(false)
+  const [userInput, setUserInput] = useState('')
+  const messagesEndRef = useRef(null)
+
+  // Auto scroll to bottom
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
+  }
+
+  useEffect(() => {
+    scrollToBottom()
+  }, [messages])
 
   // Initialize with welcome message
   useEffect(() => {
@@ -77,6 +89,35 @@ const CustomChatBot = () => {
     }
   }
 
+  // Handle text input and smart responses
+  const handleTextInput = (text) => {
+    const lowerText = text.toLowerCase()
+    
+    // Smart keyword detection
+    if (lowerText.includes('price') || lowerText.includes('cost') || lowerText.includes('how much')) {
+      return 'pricing'
+    } else if (lowerText.includes('service') || lowerText.includes('what do you do')) {
+      return 'services'
+    } else if (lowerText.includes('support') || lowerText.includes('help') || lowerText.includes('contact')) {
+      return 'support'
+    } else if (lowerText.includes('quote') || lowerText.includes('estimate')) {
+      return 'quote'
+    } else if (lowerText.includes('policy') || lowerText.includes('refund') || lowerText.includes('return')) {
+      return 'policies'
+    } else if (lowerText.includes('merch') || lowerText.includes('merchandise') || lowerText.includes('product')) {
+      return 'merch'
+    } else if (lowerText.includes('timeline') || lowerText.includes('how long')) {
+      return 'timeline'
+    } else if (lowerText.includes('faq') || lowerText.includes('question')) {
+      return 'faq'
+    } else if (lowerText.includes('hello') || lowerText.includes('hi') || lowerText.includes('hey')) {
+      return 'start'
+    } else {
+      // Default helpful response
+      return 'help'
+    }
+  }
+
   const handleOptionClick = (option) => {
     // Add user message
     const userMessage = {
@@ -125,10 +166,55 @@ const CustomChatBot = () => {
     }, 1000)
   }
 
+  const handleSendMessage = (e) => {
+    e.preventDefault()
+    if (!userInput.trim()) return
+
+    // Add user message
+    const userMessage = {
+      id: Date.now(),
+      type: 'user',
+      text: userInput
+    }
+    
+    setMessages(prev => [...prev, userMessage])
+    setIsTyping(true)
+
+    // Determine response based on input
+    const nextStep = handleTextInput(userInput)
+    setUserInput('')
+
+    // Add bot response after delay
+    setTimeout(() => {
+      setIsTyping(false)
+      
+      let botResponse
+      if (nextStep === 'help') {
+        botResponse = {
+          id: Date.now() + 1,
+          type: 'bot',
+          text: "I understand you're looking for information! Here are some things I can help you with:",
+          options: ["Services & Pricing", "Support & Contact", "Policies & Legal", "Merchandise", "Get a Quote"]
+        }
+      } else {
+        botResponse = {
+          id: Date.now() + 1,
+          type: 'bot',
+          text: chatFlow[nextStep].message,
+          options: chatFlow[nextStep].options
+        }
+      }
+      
+      setMessages(prev => [...prev, botResponse])
+      setCurrentStep(nextStep)
+    }, 1000)
+  }
+
   const resetChat = () => {
     setMessages([])
     setCurrentStep('start')
     setIsTyping(false)
+    setUserInput('')
   }
 
   const toggleChat = () => {
@@ -152,7 +238,7 @@ const CustomChatBot = () => {
 
       {/* Chat Window */}
       {isOpen && (
-        <div className="fixed bottom-24 right-6 w-80 h-96 bg-white rounded-2xl shadow-2xl border border-gray-200 z-50 flex flex-col overflow-hidden">
+        <div className="fixed bottom-24 right-6 w-80 h-[500px] bg-white rounded-2xl shadow-2xl border border-gray-200 z-50 flex flex-col overflow-hidden">
           {/* Header */}
           <div className="bg-gradient-to-r from-primary to-purple-600 text-white p-4 flex items-center justify-between">
             <div className="flex items-center space-x-2">
@@ -164,21 +250,32 @@ const CustomChatBot = () => {
                 <p className="text-xs opacity-90">We're here to help!</p>
               </div>
             </div>
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={toggleChat}
-              className="text-white hover:bg-white/20 p-1 h-auto"
-            >
-              <X className="h-4 w-4" />
-            </Button>
+            <div className="flex items-center space-x-2">
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={resetChat}
+                className="text-white hover:bg-white/20 p-1 h-auto"
+                title="Reset Chat"
+              >
+                <RotateCcw className="h-4 w-4" />
+              </Button>
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={toggleChat}
+                className="text-white hover:bg-white/20 p-1 h-auto"
+              >
+                <X className="h-4 w-4" />
+              </Button>
+            </div>
           </div>
 
           {/* Messages */}
           <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-gray-50">
             {messages.map((message) => (
               <div key={message.id} className={`flex ${message.type === 'user' ? 'justify-end' : 'justify-start'}`}>
-                <div className={`max-w-[80%] p-3 rounded-2xl ${
+                <div className={`max-w-[85%] p-3 rounded-2xl ${
                   message.type === 'user' 
                     ? 'bg-primary text-white rounded-br-md' 
                     : 'bg-white text-gray-800 rounded-bl-md shadow-sm border'
@@ -215,18 +312,30 @@ const CustomChatBot = () => {
                 </div>
               </div>
             )}
+            <div ref={messagesEndRef} />
           </div>
 
-          {/* Footer */}
+          {/* Input Area */}
           <div className="p-3 bg-white border-t border-gray-200">
-            <div className="flex items-center justify-between text-xs text-gray-500">
-              <span>Powered by H.BNS LLC</span>
-              <button 
-                onClick={resetChat}
-                className="text-primary hover:text-primary/80 transition-colors"
+            <form onSubmit={handleSendMessage} className="flex items-center space-x-2">
+              <Input
+                value={userInput}
+                onChange={(e) => setUserInput(e.target.value)}
+                placeholder="Type your message..."
+                className="flex-1 text-sm border-gray-300 focus:border-primary focus:ring-primary/20"
+                disabled={isTyping}
+              />
+              <Button
+                type="submit"
+                size="sm"
+                disabled={!userInput.trim() || isTyping}
+                className="bg-primary hover:bg-primary/90 text-white px-3"
               >
-                Reset Chat
-              </button>
+                <Send className="h-4 w-4" />
+              </Button>
+            </form>
+            <div className="flex items-center justify-center text-xs text-gray-500 mt-2">
+              <span>Type a message or use the buttons above</span>
             </div>
           </div>
         </div>
