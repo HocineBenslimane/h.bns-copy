@@ -26,21 +26,49 @@ import {
   Heart,
   TrendingUp,
   Crown,
-  ArrowRight
+  ArrowRight,
+  Play,
+  Wand2,
+  Paintbrush,
+  MousePointer,
+  Eye,
+  Download,
+  Share2,
+  Lightbulb,
+  Target,
+  Infinity,
+  Cpu,
+  Brush,
+  Palette as PaletteIcon
 } from 'lucide-react'
 
 const CustomDesigner = () => {
   const [email, setEmail] = useState('')
   const [isSubscribed, setIsSubscribed] = useState(false)
-  const [progress, setProgress] = useState(75)
-  const [subscriberCount, setSubscriberCount] = useState(1247)
+  const [progress, setProgress] = useState(87)
+  const [subscriberCount, setSubscriberCount] = useState(2847)
+  const [currentFeature, setCurrentFeature] = useState(0)
+  const [isVisible, setIsVisible] = useState(false)
 
   // Animated counter effect
   useEffect(() => {
     const interval = setInterval(() => {
-      setSubscriberCount(prev => prev + Math.floor(Math.random() * 3))
-    }, 5000)
+      setSubscriberCount(prev => prev + Math.floor(Math.random() * 5))
+    }, 3000)
     return () => clearInterval(interval)
+  }, [])
+
+  // Feature carousel
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentFeature(prev => (prev + 1) % 4)
+    }, 4000)
+    return () => clearInterval(interval)
+  }, [])
+
+  // Entrance animation
+  useEffect(() => {
+    setIsVisible(true)
   }, [])
 
   const handleNotifyMe = (e) => {
@@ -52,386 +80,386 @@ const CustomDesigner = () => {
     }
   }
 
-  const products = [
-    { name: 'T-Shirts', icon: Shirt, description: 'Premium custom printed tees', popular: true },
-    { name: 'Hoodies', icon: Shirt, description: 'Cozy personalized hoodies', popular: true },
-    { name: 'Tank Tops', icon: Shirt, description: 'Stylish summer essentials', popular: false },
-    { name: 'Mugs', icon: Coffee, description: 'Perfect morning companions', popular: true },
-    { name: 'Phone Cases', icon: Smartphone, description: 'Protect with style', popular: false },
-    { name: 'Posters', icon: ImageIcon, description: 'Gallery-quality prints', popular: false }
-  ]
-
   const features = [
     {
-      icon: Upload,
-      title: 'Drag & Drop Upload',
-      description: 'Instantly upload your designs with our lightning-fast uploader',
-      status: 'Ready'
+      icon: Wand2,
+      title: 'AI-Powered Magic',
+      description: 'Transform your ideas into stunning designs with our intelligent AI assistant',
+      color: 'from-purple-500 to-pink-500',
+      demo: '✨ "Create a minimalist logo for a coffee shop" → Perfect design in seconds!'
     },
     {
-      icon: Layers,
-      title: 'AI-Powered Tools',
-      description: 'Smart design assistance and automatic optimization',
-      status: 'In Development'
+      icon: Zap,
+      title: 'Lightning Speed',
+      description: 'Generate professional designs 10x faster than traditional methods',
+      color: 'from-yellow-400 to-orange-500',
+      demo: '⚡ Average design time: 30 seconds vs 3 hours traditional'
     },
     {
-      icon: Type,
-      title: 'Typography Studio',
-      description: '500+ premium fonts and advanced text effects',
-      status: 'Ready'
+      icon: Infinity,
+      title: 'Unlimited Creativity',
+      description: 'Endless variations and styles at your fingertips',
+      color: 'from-blue-500 to-cyan-500',
+      demo: '🎨 Generate 50+ variations of any design instantly'
     },
     {
-      icon: Palette,
-      title: 'Color Intelligence',
-      description: 'AI color matching and trend-based palettes',
-      status: 'Coming Soon'
+      icon: Target,
+      title: 'Pixel Perfect',
+      description: 'Professional quality output ready for any medium',
+      color: 'from-green-500 to-emerald-500',
+      demo: '🎯 4K resolution, vector formats, print-ready files'
     }
   ]
 
-  const benefits = [
-    { icon: Zap, title: 'Lightning Fast', description: 'Design in seconds, not hours' },
-    { icon: Crown, title: 'Premium Quality', description: 'Professional-grade output every time' },
-    { icon: Gift, title: 'Early Bird Perks', description: '50% off first order + exclusive templates' },
-    { icon: Heart, title: 'User-Friendly', description: 'No design experience required' }
+  const designTypes = [
+    { name: 'Logos', icon: '🎯', count: '10,000+', popular: true },
+    { name: 'Business Cards', icon: '💼', count: '5,000+', popular: true },
+    { name: 'Social Media', icon: '📱', count: '15,000+', popular: true },
+    { name: 'Posters', icon: '🎨', count: '8,000+', popular: false },
+    { name: 'Flyers', icon: '📄', count: '6,000+', popular: false },
+    { name: 'Banners', icon: '🏷️', count: '4,000+', popular: false }
+  ]
+
+  const testimonials = [
+    { name: 'Sarah M.', text: 'This will revolutionize my design workflow!', rating: 5 },
+    { name: 'Mike R.', text: 'Can\'t wait to try the AI features!', rating: 5 },
+    { name: 'Lisa K.', text: 'Finally, professional design made simple!', rating: 5 }
   ]
 
   return (
-    <div className="min-h-screen">
-      {/* Animated Hero Section */}
-      <section className="relative py-20 overflow-hidden bg-gradient-to-br from-primary/10 via-white to-accent/10">
-        {/* Animated background elements */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute -top-40 -right-40 w-80 h-80 bg-primary/5 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-accent/5 rounded-full blur-3xl animate-pulse delay-1000"></div>
-        </div>
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 relative overflow-hidden">
+      {/* Animated Background */}
+      <div className="absolute inset-0">
+        <div className="absolute top-0 left-0 w-full h-full bg-[url('data:image/svg+xml,%3Csvg%20width=%2260%22%20height=%2260%22%20viewBox=%220%200%2060%2060%22%20xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cg%20fill=%22none%22%20fill-rule=%22evenodd%22%3E%3Cg%20fill=%22%23ffffff%22%20fill-opacity=%220.05%22%3E%3Ccircle%20cx=%2230%22%20cy=%2230%22%20r=%222%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-20"></div>
         
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            {/* Animated Badge */}
-            <div className="inline-flex items-center space-x-2 mb-6">
-              <Badge variant="secondary" className="text-lg px-6 py-3 bg-gradient-to-r from-primary/20 to-accent/20 border-primary/30 animate-bounce">
-                <Sparkles className="h-4 w-4 mr-2" />
-                Coming Very Soon
+        {/* Floating Elements */}
+        <div className="absolute top-20 left-10 w-32 h-32 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-full blur-xl animate-pulse"></div>
+        <div className="absolute top-40 right-20 w-24 h-24 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 rounded-full blur-xl animate-pulse delay-1000"></div>
+        <div className="absolute bottom-20 left-20 w-40 h-40 bg-gradient-to-r from-green-500/20 to-emerald-500/20 rounded-full blur-xl animate-pulse delay-2000"></div>
+        <div className="absolute bottom-40 right-10 w-28 h-28 bg-gradient-to-r from-yellow-500/20 to-orange-500/20 rounded-full blur-xl animate-pulse delay-3000"></div>
+      </div>
+
+      <div className="relative z-10">
+        {/* Hero Section */}
+        <section className="pt-20 pb-10 px-4 sm:px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto text-center">
+            {/* Status Badge */}
+            <div className={`inline-flex items-center space-x-3 mb-8 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+              <Badge className="text-lg px-6 py-3 bg-gradient-to-r from-green-500/20 to-emerald-500/20 border-green-400/30 text-green-300 animate-pulse">
+                <div className="w-2 h-2 bg-green-400 rounded-full mr-2 animate-ping"></div>
+                LAUNCHING SOON
               </Badge>
-              <div className="flex items-center space-x-1 text-sm text-gray-600">
+              <div className="flex items-center space-x-2 text-white/70">
                 <Users className="h-4 w-4" />
-                <span className="font-medium">{subscriberCount.toLocaleString()}</span>
-                <span>waiting</span>
+                <span className="font-bold text-white">{subscriberCount.toLocaleString()}</span>
+                <span>excited creators waiting</span>
               </div>
             </div>
 
             {/* Main Headline */}
-            <h1 className="text-5xl md:text-7xl font-bold text-gray-900 mb-6 leading-tight">
-              Design Studio
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">
-                Revolution
-              </span>
-            </h1>
+            <div className={`transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+              <h1 className="text-6xl md:text-8xl font-black text-white mb-6 leading-tight">
+                Design
+                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 animate-gradient">
+                  Revolution
+                </span>
+                <span className="block text-4xl md:text-6xl text-white/80">Starts Here</span>
+              </h1>
+            </div>
             
-            <p className="text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto mb-8 leading-relaxed">
-              The most powerful online design tool is almost here. Create stunning custom products 
-              with AI-powered assistance, professional templates, and lightning-fast rendering.
-            </p>
+            <div className={`transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+              <p className="text-xl md:text-2xl text-white/80 max-w-4xl mx-auto mb-8 leading-relaxed">
+                The world's most powerful AI-driven design studio is about to change everything. 
+                Create <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-400 font-bold">professional designs in seconds</span>, 
+                not hours.
+              </p>
+            </div>
 
             {/* Progress Section */}
-            <div className="max-w-md mx-auto mb-8">
-              <div className="flex items-center justify-between mb-2">
-                <span className="text-sm font-medium text-gray-700">Development Progress</span>
-                <span className="text-sm font-bold text-primary">{progress}%</span>
+            <div className={`max-w-md mx-auto mb-12 transition-all duration-1000 delay-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-white font-medium">Development Progress</span>
+                  <span className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-400">{progress}%</span>
+                </div>
+                <Progress value={progress} className="h-4 bg-white/20 mb-3">
+                  <div className="h-full bg-gradient-to-r from-green-400 to-emerald-400 rounded-full transition-all duration-1000 ease-out shadow-lg shadow-green-400/50"></div>
+                </Progress>
+                <div className="flex items-center justify-center space-x-2 text-green-300 text-sm">
+                  <Rocket className="h-4 w-4 animate-bounce" />
+                  <span>Final testing phase - launching this month!</span>
+                </div>
               </div>
-              <Progress value={progress} className="h-3 bg-gray-200">
-                <div className="h-full bg-gradient-to-r from-primary to-accent rounded-full transition-all duration-1000 ease-out"></div>
-              </Progress>
-              <p className="text-xs text-gray-500 mt-2">🚀 Final testing phase - launching this month!</p>
             </div>
 
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <Button size="lg" className="group bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-white px-8 py-4 text-lg shadow-lg hover:shadow-xl transition-all duration-300">
-                <Bell className="mr-2 h-5 w-5 group-hover:animate-bounce" />
-                Get Early Access
-                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+            <div className={`flex flex-col sm:flex-row gap-6 justify-center items-center mb-16 transition-all duration-1000 delay-900 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+              <Button 
+                size="xl" 
+                className="group bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-12 py-6 text-xl font-bold rounded-full shadow-2xl hover:shadow-purple-500/25 transform transition-all hover:scale-105"
+              >
+                <Crown className="mr-3 h-6 w-6 group-hover:animate-bounce" />
+                Join VIP Early Access
+                <ArrowRight className="ml-3 h-6 w-6 group-hover:translate-x-1 transition-transform" />
               </Button>
-              <Button variant="outline" size="lg" className="px-8 py-4 text-lg border-2 hover:bg-gray-50">
-                <Rocket className="mr-2 h-5 w-5" />
+              <Button 
+                variant="outline" 
+                size="xl"
+                className="border-2 border-white/30 text-white hover:bg-white/10 px-12 py-6 text-xl font-bold rounded-full backdrop-blur-sm"
+              >
+                <Play className="mr-3 h-6 w-6" />
                 Watch Demo
               </Button>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        {/* Interactive Preview Interface */}
-        <div className="mb-20">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Sneak Peek: Design Studio</h2>
-            <p className="text-xl text-gray-600">Experience the future of custom product design</p>
-          </div>
-          
-          <Card className="max-w-6xl mx-auto shadow-2xl border-0 bg-gradient-to-br from-white to-gray-50/50 overflow-hidden">
-            <CardHeader className="bg-gradient-to-r from-primary/10 to-accent/10 border-b">
-              <div className="flex items-center justify-between">
-                <div>
-                  <CardTitle className="text-2xl flex items-center">
-                    <Sparkles className="h-6 w-6 mr-2 text-primary" />
-                    H.BNS Design Studio
-                  </CardTitle>
-                  <CardDescription className="text-base">
-                    Professional design tools at your fingertips
-                  </CardDescription>
-                </div>
-                <Badge className="bg-green-100 text-green-800 border-green-200">
-                  <div className="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></div>
-                  Live Preview
-                </Badge>
-              </div>
-            </CardHeader>
-            <CardContent className="p-8">
-              <div className="grid lg:grid-cols-3 gap-8">
-                {/* Enhanced Design Canvas */}
-                <div className="lg:col-span-2 space-y-4">
-                  <div className="flex items-center justify-between">
-                    <h3 className="text-lg font-semibold">Design Canvas</h3>
-                    <div className="flex space-x-2">
-                      <Badge variant="outline" className="text-xs">
-                        <Zap className="h-3 w-3 mr-1" />
-                        Real-time
-                      </Badge>
-                      <Badge variant="outline" className="text-xs">
-                        <Star className="h-3 w-3 mr-1" />
-                        HD Quality
-                      </Badge>
-                    </div>
-                  </div>
-                  <div className="aspect-[4/3] bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl border-2 border-dashed border-gray-300 flex items-center justify-center relative overflow-hidden group hover:border-primary/50 transition-all duration-300">
-                    <div className="text-center space-y-4 group-hover:scale-105 transition-transform duration-300">
-                      <div className="relative">
-                        <Shirt className="h-20 w-20 mx-auto text-gray-400 group-hover:text-primary transition-colors duration-300" />
-                        <div className="absolute -top-2 -right-2 w-6 h-6 bg-primary rounded-full flex items-center justify-center">
-                          <Sparkles className="h-3 w-3 text-white" />
-                        </div>
-                      </div>
-                      <div>
-                        <p className="text-gray-600 font-medium">Your masterpiece appears here</p>
-                        <p className="text-sm text-gray-500">Drag, drop, and design with ease</p>
-                      </div>
-                    </div>
-                    <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  </div>
-                </div>
-
-                {/* Enhanced Tools Panel */}
-                <div className="space-y-4">
-                  <h3 className="text-lg font-semibold flex items-center">
-                    <Palette className="h-5 w-5 mr-2 text-primary" />
-                    Design Tools
-                  </h3>
-                  <div className="space-y-3">
-                    {[
-                      { name: 'Smart Upload', icon: Upload, status: 'ready', color: 'green' },
-                      { name: 'AI Text Effects', icon: Type, status: 'new', color: 'blue' },
-                      { name: 'Color Magic', icon: Palette, status: 'popular', color: 'purple' },
-                      { name: 'Layer Studio', icon: Layers, status: 'pro', color: 'orange' }
-                    ].map((tool, index) => (
-                      <div key={index} className="flex items-center justify-between p-4 bg-white rounded-lg border hover:border-primary/30 hover:shadow-md transition-all duration-200 group cursor-pointer">
-                        <div className="flex items-center space-x-3">
-                          <div className="p-2 bg-primary/10 rounded-lg group-hover:bg-primary/20 transition-colors duration-200">
-                            <tool.icon className="h-5 w-5 text-primary" />
-                          </div>
-                          <span className="font-medium text-gray-700 group-hover:text-gray-900">{tool.name}</span>
-                        </div>
-                        <Badge 
-                          variant="outline" 
-                          className={`text-xs ${
-                            tool.color === 'green' ? 'border-green-200 text-green-700 bg-green-50' :
-                            tool.color === 'blue' ? 'border-blue-200 text-blue-700 bg-blue-50' :
-                            tool.color === 'purple' ? 'border-purple-200 text-purple-700 bg-purple-50' :
-                            'border-orange-200 text-orange-700 bg-orange-50'
-                          }`}
-                        >
-                          {tool.status}
-                        </Badge>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
-
-        {/* Enhanced Products Grid */}
-        <div className="mb-20">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Products You'll Love to Customize</h2>
-            <p className="text-xl text-gray-600">Premium quality meets unlimited creativity</p>
-          </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {products.map((product, index) => (
-              <Card key={index} className="group hover:shadow-xl transition-all duration-300 border-0 bg-gradient-to-br from-white to-gray-50/50 overflow-hidden relative">
-                {product.popular && (
-                  <div className="absolute top-4 right-4 z-10">
-                    <Badge className="bg-gradient-to-r from-primary to-accent text-white border-0">
-                      <TrendingUp className="h-3 w-3 mr-1" />
-                      Popular
-                    </Badge>
-                  </div>
-                )}
-                <CardContent className="p-8 text-center relative">
-                  <div className="mb-6 relative">
-                    <div className="w-16 h-16 mx-auto bg-gradient-to-br from-primary/10 to-accent/10 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                      <product.icon className="h-8 w-8 text-primary group-hover:text-accent transition-colors duration-300" />
-                    </div>
-                  </div>
-                  <h3 className="text-xl font-bold mb-3 text-gray-900">{product.name}</h3>
-                  <p className="text-gray-600 mb-4">{product.description}</p>
-                  <div className="flex items-center justify-center space-x-1 text-sm text-gray-500">
-                    <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
-                    <span className="font-medium">Premium Quality</span>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-
-        {/* Enhanced Features Section */}
-        <div className="mb-20">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Powerful Features Coming Your Way</h2>
-            <p className="text-xl text-gray-600">Built for creators, designed for everyone</p>
-          </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {features.map((feature, index) => (
-              <Card key={index} className="text-center hover:shadow-xl transition-all duration-300 border-0 bg-gradient-to-br from-white to-gray-50/50 group">
-                <CardContent className="p-8">
-                  <div className="mb-6">
-                    <div className="w-14 h-14 mx-auto bg-gradient-to-br from-primary/10 to-accent/10 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                      <feature.icon className="h-7 w-7 text-primary group-hover:text-accent transition-colors duration-300" />
-                    </div>
-                  </div>
-                  <h3 className="font-bold mb-3 text-gray-900">{feature.title}</h3>
-                  <p className="text-sm text-gray-600 mb-4">{feature.description}</p>
-                  <Badge 
-                    variant="outline" 
-                    className={`text-xs ${
-                      feature.status === 'Ready' ? 'border-green-200 text-green-700 bg-green-50' :
-                      feature.status === 'In Development' ? 'border-blue-200 text-blue-700 bg-blue-50' :
-                      'border-orange-200 text-orange-700 bg-orange-50'
-                    }`}
-                  >
-                    {feature.status}
-                  </Badge>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-
-        {/* Benefits Section */}
-        <div className="mb-20">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Why You'll Love Our Design Studio</h2>
-          </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {benefits.map((benefit, index) => (
-              <div key={index} className="text-center group">
-                <div className="w-16 h-16 mx-auto bg-gradient-to-br from-primary/10 to-accent/10 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                  <benefit.icon className="h-8 w-8 text-primary group-hover:text-accent transition-colors duration-300" />
-                </div>
-                <h3 className="font-bold mb-2 text-gray-900">{benefit.title}</h3>
-                <p className="text-sm text-gray-600">{benefit.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Enhanced Notify Me Section */}
-        <Card className="max-w-4xl mx-auto bg-gradient-to-br from-primary/5 via-white to-accent/5 border-primary/20 shadow-2xl overflow-hidden relative">
-          <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent/5 opacity-50"></div>
-          <CardContent className="relative p-12 text-center">
-            <div className="mb-8">
-              <div className="w-20 h-20 mx-auto bg-gradient-to-br from-primary to-accent rounded-2xl flex items-center justify-center mb-6">
-                <Bell className="h-10 w-10 text-white animate-pulse" />
-              </div>
-              <h3 className="text-3xl font-bold mb-4 text-gray-900">Join the VIP List</h3>
-              <p className="text-xl text-gray-600 mb-2">
-                Be among the first to experience the future of custom design
-              </p>
-              <p className="text-lg text-gray-500">
-                Early access + 50% off your first order + exclusive templates
+        {/* Features Showcase */}
+        <section className="py-20 px-4 sm:px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-16">
+              <h2 className="text-5xl font-bold text-white mb-6">
+                Experience the <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400">Future</span>
+              </h2>
+              <p className="text-xl text-white/70 max-w-3xl mx-auto">
+                Revolutionary features that will transform how you create
               </p>
             </div>
-            
-            {!isSubscribed ? (
-              <div className="space-y-6">
-                <form onSubmit={handleNotifyMe} className="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto">
-                  <div className="flex-1">
-                    <Label htmlFor="email" className="sr-only">Email address</Label>
-                    <Input
-                      id="email"
-                      type="email"
-                      placeholder="Enter your email for VIP access"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      className="h-12 text-lg border-2 border-primary/20 focus:border-primary"
-                      required
-                    />
-                  </div>
-                  <Button type="submit" size="lg" className="h-12 px-8 bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-white font-semibold">
-                    <Crown className="mr-2 h-5 w-5" />
-                    Get VIP Access
-                  </Button>
-                </form>
-                <div className="flex items-center justify-center space-x-6 text-sm text-gray-500">
-                  <div className="flex items-center space-x-1">
-                    <Users className="h-4 w-4" />
-                    <span>{subscriberCount.toLocaleString()} joined</span>
-                  </div>
-                  <div className="flex items-center space-x-1">
-                    <Clock className="h-4 w-4" />
-                    <span>Launching this month</span>
-                  </div>
-                </div>
+
+            {/* Interactive Feature Display */}
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
+              {/* Feature Preview */}
+              <div className="relative">
+                <Card className="bg-white/10 backdrop-blur-sm border-white/20 overflow-hidden">
+                  <CardContent className="p-8">
+                    <div className="flex items-center justify-between mb-6">
+                      <div className="flex items-center space-x-3">
+                        <div className={`p-3 rounded-xl bg-gradient-to-r ${features[currentFeature].color}`}>
+                          <features[currentFeature].icon className="h-6 w-6 text-white" />
+                        </div>
+                        <div>
+                          <h3 className="text-2xl font-bold text-white">{features[currentFeature].title}</h3>
+                          <p className="text-white/70">{features[currentFeature].description}</p>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    {/* Demo Preview */}
+                    <div className="bg-black/30 rounded-xl p-6 border border-white/10">
+                      <div className="flex items-center space-x-2 mb-4">
+                        <div className="w-3 h-3 bg-red-500 rounded-full"></div>
+                        <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                        <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+                        <span className="text-white/50 text-sm ml-4">H.BNS Design Studio</span>
+                      </div>
+                      <div className="text-green-400 font-mono text-sm">
+                        {features[currentFeature].demo}
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
               </div>
-            ) : (
+
+              {/* Feature List */}
               <div className="space-y-4">
-                <div className="flex items-center justify-center space-x-3 text-green-600 text-xl">
-                  <CheckCircle className="h-8 w-8" />
-                  <span className="font-bold">Welcome to the VIP list!</span>
-                </div>
-                <p className="text-gray-600">
-                  🎉 You'll be the first to know when we launch. Check your email for exclusive perks!
-                </p>
+                {features.map((feature, index) => (
+                  <div 
+                    key={index}
+                    className={`p-6 rounded-xl cursor-pointer transition-all duration-300 ${
+                      index === currentFeature 
+                        ? 'bg-white/20 border-2 border-white/30 scale-105' 
+                        : 'bg-white/5 border border-white/10 hover:bg-white/10'
+                    }`}
+                    onClick={() => setCurrentFeature(index)}
+                  >
+                    <div className="flex items-center space-x-4">
+                      <div className={`p-3 rounded-lg bg-gradient-to-r ${feature.color} ${index === currentFeature ? 'animate-pulse' : ''}`}>
+                        <feature.icon className="h-5 w-5 text-white" />
+                      </div>
+                      <div>
+                        <h4 className="text-lg font-semibold text-white">{feature.title}</h4>
+                        <p className="text-white/70 text-sm">{feature.description}</p>
+                      </div>
+                    </div>
+                  </div>
+                ))}
               </div>
-            )}
-          </CardContent>
-        </Card>
+            </div>
+          </div>
+        </section>
+
+        {/* Design Types Grid */}
+        <section className="py-20 px-4 sm:px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-16">
+              <h2 className="text-5xl font-bold text-white mb-6">
+                Create <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-purple-400">Anything</span>
+              </h2>
+              <p className="text-xl text-white/70">Thousands of templates and unlimited possibilities</p>
+            </div>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {designTypes.map((type, index) => (
+                <Card key={index} className="group bg-white/10 backdrop-blur-sm border-white/20 hover:bg-white/20 transition-all duration-300 hover:scale-105 overflow-hidden">
+                  {type.popular && (
+                    <div className="absolute top-4 right-4 z-10">
+                      <Badge className="bg-gradient-to-r from-yellow-500 to-orange-500 text-white border-0">
+                        <TrendingUp className="h-3 w-3 mr-1" />
+                        Popular
+                      </Badge>
+                    </div>
+                  )}
+                  <CardContent className="p-8 text-center relative">
+                    <div className="text-6xl mb-4 group-hover:scale-110 transition-transform duration-300">
+                      {type.icon}
+                    </div>
+                    <h3 className="text-2xl font-bold text-white mb-2">{type.name}</h3>
+                    <p className="text-white/70 mb-4">{type.count} templates</p>
+                    <div className="flex items-center justify-center space-x-1 text-sm text-yellow-400">
+                      {[...Array(5)].map((_, i) => (
+                        <Star key={i} className="h-4 w-4 fill-current" />
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Social Proof */}
+        <section className="py-20 px-4 sm:px-6 lg:px-8">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-4xl font-bold text-white mb-12">
+              Join <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-400">{subscriberCount.toLocaleString()}</span> Excited Creators
+            </h2>
+            
+            <div className="grid md:grid-cols-3 gap-6 mb-12">
+              {testimonials.map((testimonial, index) => (
+                <Card key={index} className="bg-white/10 backdrop-blur-sm border-white/20">
+                  <CardContent className="p-6 text-center">
+                    <div className="flex justify-center mb-3">
+                      {[...Array(testimonial.rating)].map((_, i) => (
+                        <Star key={i} className="h-4 w-4 text-yellow-400 fill-current" />
+                      ))}
+                    </div>
+                    <p className="text-white/80 mb-3">"{testimonial.text}"</p>
+                    <p className="text-white/60 font-medium">- {testimonial.name}</p>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* VIP Signup */}
+        <section className="py-20 px-4 sm:px-6 lg:px-8">
+          <div className="max-w-4xl mx-auto">
+            <Card className="bg-gradient-to-r from-purple-900/50 to-pink-900/50 backdrop-blur-sm border-purple-500/30 shadow-2xl overflow-hidden relative">
+              <div className="absolute inset-0 bg-gradient-to-r from-purple-600/10 to-pink-600/10"></div>
+              <CardContent className="relative p-12 text-center">
+                <div className="mb-8">
+                  <div className="w-24 h-24 mx-auto bg-gradient-to-r from-purple-600 to-pink-600 rounded-full flex items-center justify-center mb-6 animate-pulse">
+                    <Crown className="h-12 w-12 text-white" />
+                  </div>
+                  <h3 className="text-4xl font-bold text-white mb-4">Become a VIP Creator</h3>
+                  <p className="text-xl text-white/80 mb-2">
+                    Be the first to experience the design revolution
+                  </p>
+                  <div className="flex flex-wrap justify-center gap-4 text-white/70 text-sm">
+                    <div className="flex items-center space-x-1">
+                      <Gift className="h-4 w-4 text-green-400" />
+                      <span>50% off launch price</span>
+                    </div>
+                    <div className="flex items-center space-x-1">
+                      <Zap className="h-4 w-4 text-yellow-400" />
+                      <span>Exclusive templates</span>
+                    </div>
+                    <div className="flex items-center space-x-1">
+                      <Crown className="h-4 w-4 text-purple-400" />
+                      <span>VIP support</span>
+                    </div>
+                  </div>
+                </div>
+                
+                {!isSubscribed ? (
+                  <div className="space-y-6">
+                    <form onSubmit={handleNotifyMe} className="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto">
+                      <div className="flex-1">
+                        <Input
+                          type="email"
+                          placeholder="Enter your email for VIP access"
+                          value={email}
+                          onChange={(e) => setEmail(e.target.value)}
+                          className="h-14 text-lg bg-white/10 border-white/30 text-white placeholder-white/50 focus:border-purple-400 focus:ring-purple-400/20"
+                          required
+                        />
+                      </div>
+                      <Button 
+                        type="submit" 
+                        size="lg" 
+                        className="h-14 px-8 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-bold text-lg rounded-xl"
+                      >
+                        <Crown className="mr-2 h-5 w-5" />
+                        Join VIP List
+                      </Button>
+                    </form>
+                    
+                    <div className="flex items-center justify-center space-x-6 text-sm text-white/60">
+                      <div className="flex items-center space-x-1">
+                        <Users className="h-4 w-4" />
+                        <span>{subscriberCount.toLocaleString()} joined</span>
+                      </div>
+                      <div className="flex items-center space-x-1">
+                        <Clock className="h-4 w-4" />
+                        <span>Launching this month</span>
+                      </div>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="space-y-4">
+                    <div className="flex items-center justify-center space-x-3 text-green-400 text-2xl">
+                      <CheckCircle className="h-10 w-10" />
+                      <span className="font-bold">Welcome to the VIP list!</span>
+                    </div>
+                    <p className="text-white/80 text-lg">
+                      🎉 You're in! Check your email for exclusive VIP perks and early access details.
+                    </p>
+                  </div>
+                )}
+              </CardContent>
+            </Card>
+          </div>
+        </section>
 
         {/* Current Alternative */}
-        <div className="text-center mt-20">
-          <Card className="max-w-2xl mx-auto border-2 border-dashed border-gray-300 bg-gray-50/50">
-            <CardContent className="p-8">
-              <h3 className="text-2xl font-bold mb-4 text-gray-900">Need Custom Products Right Now?</h3>
-              <p className="text-gray-600 mb-6 text-lg">
-                While our design studio is launching, our expert team can create 
-                amazing custom products for you manually.
-              </p>
-              <Button size="lg" className="bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-white px-8 py-4" asChild>
-                <a href="/#quote">
-                  <Rocket className="mr-2 h-5 w-5" />
-                  Request Custom Design Now
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </a>
-              </Button>
-            </CardContent>
-          </Card>
-        </div>
+        <section className="py-20 px-4 sm:px-6 lg:px-8">
+          <div className="max-w-4xl mx-auto text-center">
+            <Card className="bg-white/5 backdrop-blur-sm border-white/20 border-dashed">
+              <CardContent className="p-12">
+                <h3 className="text-3xl font-bold text-white mb-6">Need Custom Designs Right Now?</h3>
+                <p className="text-white/70 mb-8 text-lg leading-relaxed">
+                  While our revolutionary design studio is launching, our expert team can create 
+                  amazing custom designs for you manually. Professional quality, personal touch.
+                </p>
+                <Button 
+                  size="xl" 
+                  className="bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white px-12 py-6 text-xl font-bold rounded-full" 
+                  asChild
+                >
+                  <a href="/get-a-quote">
+                    <Paintbrush className="mr-3 h-6 w-6" />
+                    Get Custom Design Now
+                    <ArrowRight className="ml-3 h-6 w-6" />
+                  </a>
+                </Button>
+              </CardContent>
+            </Card>
+          </div>
+        </section>
       </div>
     </div>
   )
 }
 
 export default CustomDesigner
-
