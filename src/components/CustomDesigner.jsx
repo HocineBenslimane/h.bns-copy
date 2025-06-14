@@ -235,7 +235,10 @@ const CustomDesigner = () => {
                     <div className="flex items-center justify-between mb-6">
                       <div className="flex items-center space-x-3">
                         <div className={`p-3 rounded-xl bg-gradient-to-r ${features[currentFeature].color}`}>
-                          <features[currentFeature].icon className="h-6 w-6 text-white" />
+                          {(() => {
+                            const IconComponent = features[currentFeature].icon;
+                            return <IconComponent className="h-6 w-6 text-white" />;
+                          })()}
                         </div>
                         <div>
                           <h3 className="text-2xl font-bold text-white">{features[currentFeature].title}</h3>
@@ -262,27 +265,30 @@ const CustomDesigner = () => {
 
               {/* Feature List */}
               <div className="space-y-4">
-                {features.map((feature, index) => (
-                  <div 
-                    key={index}
-                    className={`p-6 rounded-xl cursor-pointer transition-all duration-300 ${
-                      index === currentFeature 
-                        ? 'bg-white/20 border-2 border-white/30 scale-105' 
-                        : 'bg-white/5 border border-white/10 hover:bg-white/10'
-                    }`}
-                    onClick={() => setCurrentFeature(index)}
-                  >
-                    <div className="flex items-center space-x-4">
-                      <div className={`p-3 rounded-lg bg-gradient-to-r ${feature.color} ${index === currentFeature ? 'animate-pulse' : ''}`}>
-                        <feature.icon className="h-5 w-5 text-white" />
-                      </div>
-                      <div>
-                        <h4 className="text-lg font-semibold text-white">{feature.title}</h4>
-                        <p className="text-white/70 text-sm">{feature.description}</p>
+                {features.map((feature, index) => {
+                  const IconComponent = feature.icon;
+                  return (
+                    <div 
+                      key={index}
+                      className={`p-6 rounded-xl cursor-pointer transition-all duration-300 ${
+                        index === currentFeature 
+                          ? 'bg-white/20 border-2 border-white/30 scale-105' 
+                          : 'bg-white/5 border border-white/10 hover:bg-white/10'
+                      }`}
+                      onClick={() => setCurrentFeature(index)}
+                    >
+                      <div className="flex items-center space-x-4">
+                        <div className={`p-3 rounded-lg bg-gradient-to-r ${feature.color} ${index === currentFeature ? 'animate-pulse' : ''}`}>
+                          <IconComponent className="h-5 w-5 text-white" />
+                        </div>
+                        <div>
+                          <h4 className="text-lg font-semibold text-white">{feature.title}</h4>
+                          <p className="text-white/70 text-sm">{feature.description}</p>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             </div>
           </div>
