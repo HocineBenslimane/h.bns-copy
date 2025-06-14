@@ -23,6 +23,7 @@ function App() {
       'hbns_chat_history',
       'hbns_chat_v2', 
       'hbns_chat_v3',
+      'hbns_fresh_chat',
       'rcb-chat-history',
       'rcb-settings'
     ];
@@ -33,12 +34,21 @@ function App() {
     });
   }, []);
 
-  // Completely fresh chatbot configuration
+  // Fixed chatbot configuration - no automatic redirects
   const flow = {
     start: {
       message: "Hello! Welcome to H.BNS LLC! 🎨 How can I assist you today?",
       options: ["Services & Pricing", "Support & Contact", "Policies & Legal", "Merchandise", "Get a Quote"],
-      path: "services_menu"
+      path: (params) => {
+        switch (params.userInput) {
+          case "Services & Pricing": return "services_menu";
+          case "Support & Contact": return "support_info";
+          case "Policies & Legal": return "policies_info";
+          case "Merchandise": return "merch_info";
+          case "Get a Quote": return "quote_info";
+          default: return "clarify";
+        }
+      }
     },
     
     services_menu: {
@@ -50,7 +60,7 @@ function App() {
           case "Digital Products": return "digital_info";
           case "Get a Quote": return "quote_info";
           case "Main Menu": return "start";
-          default: return "services_menu";
+          default: return "clarify";
         }
       }
     },
@@ -63,7 +73,7 @@ function App() {
           case "Get a Quote": return "quote_info";
           case "Timeline Info": return "timeline_info";
           case "Main Menu": return "start";
-          default: return "pricing_info";
+          default: return "clarify";
         }
       }
     },
@@ -76,7 +86,7 @@ function App() {
           case "Get a Quote": return "quote_info";
           case "Back to Pricing": return "pricing_info";
           case "Main Menu": return "start";
-          default: return "timeline_info";
+          default: return "clarify";
         }
       }
     },
@@ -89,7 +99,7 @@ function App() {
           case "Back to Services": return "services_menu";
           case "Get a Quote": return "quote_info";
           case "Main Menu": return "start";
-          default: return "digital_info";
+          default: return "clarify";
         }
       }
     },
@@ -102,7 +112,7 @@ function App() {
           case "FAQ": return "faq_info";
           case "Contact Form": return "contact_info";
           case "Main Menu": return "start";
-          default: return "support_info";
+          default: return "clarify";
         }
       }
     },
@@ -115,7 +125,7 @@ function App() {
           case "Back to Support": return "support_info";
           case "Get a Quote": return "quote_info";
           case "Main Menu": return "start";
-          default: return "faq_info";
+          default: return "clarify";
         }
       }
     },
@@ -128,7 +138,7 @@ function App() {
           case "Back to Support": return "support_info";
           case "Get a Quote": return "quote_info";
           case "Main Menu": return "start";
-          default: return "contact_info";
+          default: return "clarify";
         }
       }
     },
@@ -141,7 +151,7 @@ function App() {
           case "Refund Details": return "refund_info";
           case "Privacy Info": return "privacy_info";
           case "Main Menu": return "start";
-          default: return "policies_info";
+          default: return "clarify";
         }
       }
     },
@@ -154,7 +164,7 @@ function App() {
           case "Back to Policies": return "policies_info";
           case "Contact Support": return "support_info";
           case "Main Menu": return "start";
-          default: return "refund_info";
+          default: return "clarify";
         }
       }
     },
@@ -167,7 +177,7 @@ function App() {
           case "Back to Policies": return "policies_info";
           case "Contact Support": return "support_info";
           case "Main Menu": return "start";
-          default: return "privacy_info";
+          default: return "clarify";
         }
       }
     },
@@ -180,7 +190,7 @@ function App() {
           case "Main Menu": return "start";
           case "Get a Quote": return "quote_info";
           case "Contact Support": return "support_info";
-          default: return "merch_info";
+          default: return "clarify";
         }
       }
     },
@@ -193,7 +203,22 @@ function App() {
           case "Main Menu": return "start";
           case "Contact Support": return "support_info";
           case "Services Info": return "services_menu";
-          default: return "quote_info";
+          default: return "clarify";
+        }
+      }
+    },
+
+    clarify: {
+      message: "I'm sorry, I didn't quite understand that. Could you please choose from the available options? 🤔",
+      options: ["Services & Pricing", "Support & Contact", "Policies & Legal", "Merchandise", "Get a Quote"],
+      path: (params) => {
+        switch (params.userInput) {
+          case "Services & Pricing": return "services_menu";
+          case "Support & Contact": return "support_info";
+          case "Policies & Legal": return "policies_info";
+          case "Merchandise": return "merch_info";
+          case "Get a Quote": return "quote_info";
+          default: return "start";
         }
       }
     }
@@ -214,7 +239,7 @@ function App() {
       maxLength: 500
     },
     chatHistory: {
-      storageKey: "hbns_fresh_chat", // Completely new storage key
+      storageKey: `hbns_clean_chat_${Date.now()}`, // Unique storage key each time
       maxEntries: 20,
       disabled: false
     },
