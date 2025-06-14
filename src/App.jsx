@@ -254,23 +254,27 @@ function App() {
 
   const settings = {
     chatInput: {
-      enabledPlaceholderText: "What can we help you with ?",
-      showCharacterCount: false
+      enabledPlaceholderText: "Ask me anything...",
+      showCharacterCount: false,
+      maxLength: 500
     },
     general: {
       primaryColor: "#E39A97",
       secondaryColor: "#B85340",
       fontFamily: "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
-      fontSize: 14,
-      showFooter: false
+      fontSize: 13,
+      showFooter: false,
+      embedded: false
     },
     chatHistory: {
-      storageKey: "hbns_chat_history"
+      storageKey: "hbns_chat_history",
+      maxEntries: 50
     },
     header: {
       title: "H.BNS Support",
-      showAvatar: false,
-      avatar: "🎨"
+      showAvatar: true,
+      avatar: "🎨",
+      closeChatIcon: "✕"
     },
     chatButton: {
       icon: "💬"
@@ -280,18 +284,20 @@ function App() {
       showAvatar: false,
       backgroundColor: "#E39A97",
       color: "#FFFFFF",
-      borderRadius: "18px 18px 4px 18px",
-      boxShadow: "0px 4px 4px #00000040"
+      borderRadius: "16px 16px 4px 16px",
+      boxShadow: "0px 2px 8px rgba(0,0,0,0.1)",
+      maxWidth: "80%"
     },
     botBubble: {
       animate: true,
       showAvatar: true,
       avatar: "🎨",
       color: "#FFFFFF",
-      borderRadius: "18px 18px 18px 4px",
+      borderRadius: "16px 16px 16px 4px",
       backgroundColor: "#E39A97",
-      padding: "10px 14px",
-      boxShadow: "0px 4px 4px #00000040"
+      padding: "8px 12px",
+      boxShadow: "0px 2px 8px rgba(0,0,0,0.1)",
+      maxWidth: "85%"
     },
     theme: {
       primaryColor: "#E39A97",
@@ -299,44 +305,75 @@ function App() {
       fontFamily: "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif"
     },
     chatWindowStyle: {
-      backgroundImage: "linear-gradient(to bottom, #823b42, #823b42, #823b42, #823b42, #b14956, #b14956, #b14956, #B85340)"
+      backgroundImage: "linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)",
+      maxHeight: "500px",
+      width: "350px",
+      borderRadius: "16px",
+      boxShadow: "0 10px 30px rgba(0,0,0,0.15)",
+      border: "1px solid rgba(227, 154, 151, 0.2)"
     },
     headerStyle: {
-      backgroundImage: "linear-gradient(to bottom, #723053, #723053, #723053, #723053, #723053, #823b42)",
+      background: "linear-gradient(135deg, #E39A97 0%, #B85340 100%)",
       color: "#FFFFFF",
-      borderBottom: "none"
+      borderBottom: "none",
+      borderRadius: "16px 16px 0 0",
+      padding: "12px 16px",
+      fontSize: "14px",
+      fontWeight: "600"
     },
     chatInputContainerStyle: {
-      backgroundColor: "#B85340",
-      borderTopColor: "#B85340",
-      backdropFilter: "blur(8px)"
+      backgroundColor: "#FFFFFF",
+      borderTop: "1px solid #E5E7EB",
+      borderRadius: "0 0 16px 16px",
+      padding: "12px"
     },
     chatInputAreaStyle: {
-      minHeight: 25,
-      padding: "8px 15px",
-      backgroundColor: "#EEEEEE",
-      color: "#333333",
-      fontSize: "14px",
-      outlineColor: "transparent",
-      borderRadius: "20px"
+      minHeight: 20,
+      padding: "8px 12px",
+      backgroundColor: "#F9FAFB",
+      color: "#374151",
+      fontSize: "13px",
+      border: "1px solid #E5E7EB",
+      borderRadius: "12px",
+      resize: "none"
     },
     sendButtonStyle: {
-      backgroundColor: "#B85340",
+      backgroundColor: "#E39A97",
       border: "none",
-      boxShadow: "none",
-      color: "#EEEEEE"
+      borderRadius: "8px",
+      color: "#FFFFFF",
+      padding: "6px 8px",
+      marginLeft: "8px"
     },
     sendButtonHoveredStyle: {
-      backgroundColor: "#E39A97"
+      backgroundColor: "#B85340",
+      transform: "scale(1.05)"
     },
     chatHistoryButtonStyle: {
       color: "#E39A97",
       backgroundColor: "#FFFFFF",
-      border: "1px solid #DAEDF2"
+      border: "1px solid #E5E7EB",
+      borderRadius: "8px",
+      fontSize: "12px"
     },
     chatHistoryButtonHoveredStyle: {
       color: "#FFFFFF",
       backgroundColor: "#E39A97"
+    },
+    optionsStyle: {
+      color: "#E39A97",
+      backgroundColor: "#FFFFFF",
+      border: "1px solid #E39A97",
+      borderRadius: "12px",
+      padding: "6px 12px",
+      margin: "2px",
+      fontSize: "12px",
+      fontWeight: "500"
+    },
+    optionsHoveredStyle: {
+      color: "#FFFFFF",
+      backgroundColor: "#E39A97",
+      transform: "translateY(-1px)"
     }
   };
 
