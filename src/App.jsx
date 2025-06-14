@@ -11,7 +11,7 @@ import Policies from './components/Policies'
 import Legal from './components/Legal'
 import PaymentTerms from './components/PaymentTerms'
 import QuoteForm from './components/QuoteForm'
-import Merch from './components/Merch' // Import the new Merch component
+import Merch from './components/Merch'
 import Footer from './components/Footer'
 import './App.css'
 
@@ -253,11 +253,6 @@ function App() {
   };
 
   const settings = {
-    chatInput: {
-      enabledPlaceholderText: "Ask me anything...",
-      showCharacterCount: false,
-      maxLength: 500
-    },
     general: {
       primaryColor: "#E39A97",
       secondaryColor: "#B85340",
@@ -266,9 +261,15 @@ function App() {
       showFooter: false,
       embedded: false
     },
+    chatInput: {
+      enabledPlaceholderText: "Ask me anything...",
+      showCharacterCount: false,
+      maxLength: 500
+    },
     chatHistory: {
-      storageKey: "hbns_chat_history",
-      maxEntries: 50
+      storageKey: "hbns_chat_history_v2", // Changed key to reset any corrupted history
+      maxEntries: 50,
+      disabled: false
     },
     header: {
       title: "H.BNS Support",
@@ -381,7 +382,11 @@ function App() {
     <Router>
       <div className="min-h-screen bg-background">
         <Navigation />
-        <ChatBot flow={flow} settings={settings} />
+        <ChatBot 
+          flow={flow} 
+          settings={settings}
+          key="hbns-chatbot" // Add unique key to prevent duplication
+        />
         <Routes>
           <Route path="/" element={<Hero />} />
           <Route path="/products" element={<Products />} />
@@ -392,7 +397,7 @@ function App() {
           <Route path="/legal" element={<Legal />} />
           <Route path="/payment-terms" element={<PaymentTerms />} />
           <Route path="/get-a-quote" element={<QuoteForm />} />
-          <Route path="/merch" element={<Merch />} /> {/* Add route for Merch */}
+          <Route path="/merch" element={<Merch />} />
         </Routes>
         <Footer />
       </div>
